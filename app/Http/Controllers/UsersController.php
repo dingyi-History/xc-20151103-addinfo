@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
 
 //员工管理
 class UsersController extends Controller
@@ -59,7 +58,7 @@ class UsersController extends Controller
     {
         if ($request->user()->can('see-all') || $request->user()->can('see-dep')) {
             $input = $request->all();
-            $input['password'] = base64_encode($request->input('password'));
+            $input['password'] = bcrypt($input['password']);
             $res = User::create($input);
             if ($res) {
                 $request->session()->flash('status1', '添加成功');
@@ -68,7 +67,6 @@ class UsersController extends Controller
         } else {
             abort(403);
         }
-
     }
 
     //显示编辑员工
@@ -76,7 +74,7 @@ class UsersController extends Controller
     {
         if ($request->user()->can('see-all') || $request->user()->can('see-dep')) {
             $user = User::find($id);
-            $user['password'] = base64_decode($user['password']);
+            $user['password'] = null;
             $deps = $this->getDep();
             $authority = $this->getAuthority($request);
             return view('user.edit', compact('user', 'deps', 'authority'));
@@ -91,7 +89,11 @@ class UsersController extends Controller
         if ($request->user()->can('see-all') || $request->user()->can('see-dep')) {
             $user = User::find($id);
             $input = $request->all();
-            $input['password'] = base64_encode($request->input('password'));
+            if (isset($input['password']) && $input['password'] != '') {
+                $input['password'] = bcrypt($request->input('password'));
+            } else {
+                $input['password'] = $user['password'];
+            }
             $res = $user->update($input);
             if ($res) {
                 $request->session()->flash('status1', '保存成功');
@@ -118,6 +120,34 @@ class UsersController extends Controller
         }
 
     }
+
+    //显示密码修改
+    public function showreset()
+    {
+        return view('user.reset');
+    }
+
+    //更改密码
+    public function updatereset(Request $request)
+    {
+        $user = User::find($this->auth['id']);
+        $input = $request->all();
+        $old_pwd0 = $user['password'];
+        $old_pwd1 = bcrypt($input['old_password']);//加密新输入的密码
+        $new_pwd = $input['new_password'];
+        dd($old_pwd1.'<br/>'.$old_pwd0);
+        if ($old_pwd0 == $old_pwd1) {
+            dd('可以修改密码');
+            $res = $user->update($new_pwd);
+            if ($res) {
+                $request->session()->flash('status1', '修改成功');
+                return redirect('/userinfo');
+            }
+        }
+        $request->session()->flash('status0', '修改失败');
+        return redirect('/users/resetpwd');
+    }
+
 
     //获取部门数据
     private function getDep()

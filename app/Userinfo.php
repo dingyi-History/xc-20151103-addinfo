@@ -33,7 +33,8 @@ class Userinfo extends Model
         'user_id',
         'screen_name',
         'address',
-        'addman_id'
+        'addman_id',
+        'remark'
     ];
 
     //多个信息对应一个录入信息的人

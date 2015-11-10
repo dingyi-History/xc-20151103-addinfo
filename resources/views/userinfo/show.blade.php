@@ -50,7 +50,7 @@
                 <td>{{$userinfo->birthday}}</td>
             </tr>
             <tr>
-                <th>当前所在地</th>
+                <th style="min-width: 120px;">当前所在地</th>
                 <td>{{$userinfo->residence}}</td>
                 <th>毕业学校</th>
                 <td>{{$userinfo->school}}</td>
@@ -78,6 +78,10 @@
                 <td>{{$userinfo->screen_name}}</td>
                 <th>联系地址</th>
                 <td>{{$userinfo->address}}</td>
+            </tr>
+            <tr>
+                <th>备注</th>
+                <td colspan="3">{{$userinfo->remark}}</td>
             </tr>
             </tbody>
         </table>

@@ -34,7 +34,7 @@
     <div class="form-group row">
         {!! Form::label('password','密码',['class' => 'col-md-2 control-label']) !!}
         <div class="col-md-10">
-            {!! Form::text('password', null,['class' => 'form-control']) !!}
+            {!! Form::password('password',['class' => 'form-control']) !!}
         </div>
     </div>
 

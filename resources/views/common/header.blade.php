@@ -19,6 +19,7 @@
                     @can('see-dep')
                     <a class="dropdown-item" href="/users">部门管理</a>
                     @endcan
+                    <a class="dropdown-item" href="/users/resetpwd">修改个人密码</a>
                     <a class="dropdown-item bg-danger" href="/auth/logout">退出</a>
                 </div>
             </div>

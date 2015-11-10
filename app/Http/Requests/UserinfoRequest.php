@@ -24,11 +24,11 @@ class UserinfoRequest extends Request
      */
     public function rules()
     {
-        $rules =  [
-            'phone' => 'required | digits_between:11,11 | numeric | unique:userinfos,phone',
+        $rules = [
+            'phone' => 'required |  numeric | unique:userinfos,phone',
             'name' => 'required | string',
             'email' => 'required | email',
-            'identity' => 'required | between:15,18 | unique:userinfos,identity',
+            'identity' => 'required |  unique:userinfos,identity',
             'sex' => 'required | in:未知,男,女',
             'relationship_status' => 'required | in: 未知,单身,恋爱,订婚,已婚,离异,丧偶',
             'sex_orietation' => 'required | in:未知,男性,女性,双性',
@@ -37,21 +37,21 @@ class UserinfoRequest extends Request
             'birthday' => 'required',
             'residence' => 'required  |string',
             'hometown' => 'required |string',
-            'degree'=> 'required |string',
-            'school'=> 'required |string',
-            'major'=> 'required |string',
+            'degree' => 'required |string',
+            'school' => 'required |string',
+            'major' => 'required |string',
             'profession' => 'required |string',
-            'qq'=> 'required | digits_between:1,11 | numeric',
-            'weibo'=> 'required |string',
-            'weixin'=> 'required |string',
-            'source'=> 'required |string',
-            'user_id'=> 'required |string',
-            'screen_name'=> 'required |string',
-            'address'=> 'required |string'
+            'qq' => 'required | digits_between:1,11 | numeric',
+            'weibo' => 'required |string',
+            'weixin' => 'required |string',
+            'source' => 'required |string',
+            'user_id' => 'required |string',
+            'screen_name' => 'required |string',
+            'address' => 'required |string',
+            'remark' => '',
         ];
 
-        if($this->method() == 'PATCH')
-        {
+        if ($this->method() == 'PATCH') {
             $rules['phone'] = 'required | digits_between:11,11 | numeric ';
             $rules['identity'] = 'required';
         }

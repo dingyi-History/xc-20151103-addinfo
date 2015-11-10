@@ -31,6 +31,10 @@ class UsersRequest extends Request
             'authority' => 'required',
             'dep_id' => 'required'
         ];
+        if($this->method() == 'PATCH')
+        {
+            $rules['password'] = '';
+        }
         return $rules;
     }
 }

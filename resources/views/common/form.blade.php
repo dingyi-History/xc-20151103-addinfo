@@ -140,6 +140,12 @@
         </div>
     </div>
     <div class="form-group row">
+        {!! Form::label('remark','备注',['class' => 'col-md-2 control-label']) !!}
+        <div class="col-md-10">
+            {!! Form::textarea('remark',null,['class' => ' form-control','rows' => '3','placeholder' => '无']) !!}
+        </div>
+    </div>
+    <div class="form-group row">
         <div class="col-md-8"></div>
         <div class="col-md-2">
             <button type="reset" class="btn btn-primary-outline btn-block">重置</button>
