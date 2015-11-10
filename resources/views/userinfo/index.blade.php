@@ -24,6 +24,27 @@
 @endsection
 
 @section('content')
+    <div class="container">
+        <fieldset>
+            <div class="form-group row">
+                {!! Form::label('name','真实姓名',['class' => 'col-md-2 control-label']) !!}
+                <div class="col-md-3">
+                    {!! Form::text('name',null,['class' => 'form-control']) !!}
+                </div>
+                {!! Form::label('name','手机号',['class' => 'col-md-2 control-label']) !!}
+                <div class="col-md-3">
+                    {!! Form::text('name',null,['class' => 'form-control']) !!}
+                </div>
+                {!! Form::label('name','身份证号',['class' => 'col-md-2 control-label']) !!}
+                <div class="col-md-3">
+                    {!! Form::text('name',null,['class' => 'form-control']) !!}
+                </div>
+                <div class="col-sm-1">
+                    <button type="submit" class="btn btn-success-outline btn-block">查询</button>
+                </div>
+            </div>
+        </fieldset>
+    </div>
     <div class="index-table table-responsive">
         <table class="table table-bordered table-hover table-striped  shadow-z-1">
             <thead>
