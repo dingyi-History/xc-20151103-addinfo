@@ -22,11 +22,3 @@
         </div>
     @endif
 @endsection
-
-@section('js')
-    @if(isset($msg1))
-        <script>
-            swal("OK", "{{$msg1}}}!", "success")
-        </script>
-    @endif
-@endsection

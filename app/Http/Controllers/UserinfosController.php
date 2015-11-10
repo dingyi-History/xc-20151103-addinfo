@@ -59,6 +59,7 @@ class UserinfosController extends CommonController
         $input = $req->all();
         $input['addman_id'] = $this->user['id'];
         $res = Userinfo::create($input);
+
         return $this->responseResult($res, $req, '存储失败', '保存成功', '');
     }
 

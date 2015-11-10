@@ -16,6 +16,9 @@
                     @can('see-all')
                     <a class="dropdown-item" href="/users">员工管理</a>
                     @endcan
+                    @can('see-dep')
+                    <a class="dropdown-item" href="/users">部门管理</a>
+                    @endcan
                     <a class="dropdown-item bg-danger" href="/auth/logout">退出</a>
                 </div>
             </div>

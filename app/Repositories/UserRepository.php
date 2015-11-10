@@ -8,17 +8,20 @@
 namespace App\Repositories;
 
 use App\User;
+use Illuminate\Support\Facades\Crypt;
 
 class UserRepository implements UserRepositoryInterface
 {
     public function getAllUser()
     {
-        return User::OrderBy('dep_id')->Paginate(env('PAGE_ROWS'));
+        return $users = User::OrderBy('dep_id')->Paginate(env('PAGE_ROWS'));
     }
 
-    public function getDepUser($id)
+    public function getDepUser($dep_id)
     {
-        return User::find($id)->dep()->GroupBy('dep_id')->Paginate(env('PAGE_ROWS'));
+        return User::where('dep_id',$dep_id)->Paginate(env('PAGE_ROWS'));
     }
+
+
 
 }

@@ -1,4 +1,4 @@
-{!! Form::token() !!}
+{!! csrf_field() !!}
 <fieldset>
     <legend class="create-form-title">{{$form_title}}</legend>
     <div class="form-group row">
@@ -7,10 +7,16 @@
             {!! Form::text('realname',null,['class' => 'form-control']) !!}
         </div>
     </div>
+
     <div class="form-group row">
         {!! Form::label('dep_id','部门',['class' => 'col-md-2 control-label']) !!}
         <div class="col-md-10">
+            @can('see-all')
             {!! Form::select('dep_id',$deps,null,['class'=>'form-control']) !!}
+            @endcan
+            @can('see-dep')
+            <input name="dep_id" class="form-control" type="text" value="{{Auth::user()['dep_id']}}" readonly>
+            @endcan
         </div>
     </div>
     <div class="form-group row">
@@ -28,7 +34,7 @@
     <div class="form-group row">
         {!! Form::label('password','密码',['class' => 'col-md-2 control-label']) !!}
         <div class="col-md-10">
-            {!! Form::password('password', array('class' => 'form-control')) !!}
+            {!! Form::text('password', null,['class' => 'form-control']) !!}
         </div>
     </div>
 

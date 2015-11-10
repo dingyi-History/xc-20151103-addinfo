@@ -11,7 +11,6 @@
     @yield('css')
 </head>
 <body>
-
 {{-- 包含页头 --}}
 @yield('header')
 {{-- 继承后插入的内容 --}}
@@ -27,7 +26,6 @@
     @if(count($errors)>0)
     sweetAlert("对不起", "Sorry", "error");
     @endif
-
     @if(session('status0'))
         sweetAlert("对不起","{{session('status0')}}","error");
     @endif

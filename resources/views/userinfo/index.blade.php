@@ -1,12 +1,12 @@
 @extends('common.base')
 @section('title')
-    @can('see-all')
+    @can('see_all')
     全部用户信息
     @endcan
-    @can('see-dep')
+    @can('see_dep')
     本部门录入的用户信息
     @endcan
-    @can('see-me')
+    @can('see_me')
     我录入的用户信息
     @endcan
 @endsection

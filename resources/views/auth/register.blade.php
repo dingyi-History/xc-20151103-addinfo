@@ -1,5 +1,5 @@
 @extends('common.base')
-@section('title')  注册 @endsection
+@section('title')  登录 @endsection
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('assets/loginbg/css/normalize.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('assets/loginbg/css/demo.css')}}"/>
@@ -13,13 +13,13 @@
                 <div class="main-title container shadow-z-1">
                     <form class="form" method="post" action="/auth/register">
                         {!! csrf_field() !!}
-                        <legend class="create-form-title">注册</legend>
+                        <legend class="create-form-title">登录</legend>
                         <div class="form-group row">
                             <label for="name" class="col-md-3 control-label">邮箱</label>
 
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="name" placeholder="example@xici.com"
-                                       name="email" value="{{ old('email') }}">
+                                <input type="email" class="form-control" id="name" placeholder="example@xici.net"
+                                       name="email" value="{{ old('email') }}" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -27,15 +27,7 @@
 
                             <div class="col-md-9">
                                 <input type="password" class="form-control" id="pwd" placeholder="密码"
-                                       name="password">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="dep" class="col-md-3 control-label">部门</label>
-
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" id="dep" placeholder="部门" name="department"
-                                       value="{{ old('department') }}">
+                                       name="password" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -44,23 +36,20 @@
                                 <button type="submit" class="btn btn-success">GO</button>
                             </div>
                         </div>
-
                     </form>
-                    @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                 </div>
             </div>
         </div>
     </div>
-
-
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 @endsection
 @section('js')
     <script src="{{asset('assets/loginbg/js/rAF.js')}}"></script>

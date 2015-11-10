@@ -38,6 +38,7 @@
                 <th>部门</th>
                 <th>员工姓名</th>
                 <th>邮箱</th>
+                <th>权限</th>
                 <th>账号设置</th>
             </tr>
             </thead>
@@ -48,7 +49,16 @@
                     <td>{{$user->realname}}</td>
                     <th>{{$user->email}}</th>
                     <td>
+                    <?php
+                    switch($user->authority)
+                    {
+                        case 1: echo '系统管理员';break;
+                        case 2: echo '部门管理员';break;
+                        default:echo '员工';
+                    }?></td>
+                    <td>
                         <a href="/users/{{$user->id}}/edit" class="btn btn-info-outline">编辑</a>
+
                         <form action="/users/{{$user->id}}" method="post" style="display: inline-block;">
                             {!! csrf_field() !!}
                             <input name="_method" type="hidden" value="DELETE"/>

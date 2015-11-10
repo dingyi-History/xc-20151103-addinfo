@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Support\Facades\Crypt;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -24,7 +25,6 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
     protected $redirectPath = '/userinfo';//登录成功跳转
-    protected $username = 'email';//邮箱作为用户名登录
     /**
      * Create a new authentication controller instance.
      *
@@ -46,8 +46,6 @@ class AuthController extends Controller
         return Validator::make($data, [
             'email' => 'required|email|max:255',
             'password' => 'required|min:6',
-            'department' => 'required|max:30',
-
         ]);
     }
 
@@ -62,9 +60,8 @@ class AuthController extends Controller
     {
         return User::create([
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'department' => $data['department'],
-
+            'password' => base64_encode($data['password']),
+            'dep_id' => '1'
         ]);
     }
 }
