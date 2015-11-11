@@ -54,5 +54,4 @@ class Userinfo extends Model
     {
         $query->OrderBy('userinfos.id', 'desc');
     }
-
 }

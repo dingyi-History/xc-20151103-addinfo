@@ -5,6 +5,9 @@
         {!! Form::label('realname','真实姓名',['class' => 'col-md-2 control-label']) !!}
         <div class="col-md-10">
             {!! Form::text('realname',null,['class' => 'form-control']) !!}
+            @if ($errors->has('realname'))
+                <span class="form-span-error">* 请正确输入姓名</span>
+            @endif
         </div>
     </div>
 
@@ -17,24 +20,36 @@
             @can('see-dep')
             <input name="dep_id" class="form-control" type="text" value="{{Auth::user()['dep_id']}}" readonly>
             @endcan
+            @if ($errors->has('dep_id'))
+                <span class="form-span-error">* 请正确选择部门</span>
+            @endif
         </div>
     </div>
     <div class="form-group row">
         {!! Form::label('authority','权限',['class' => 'col-md-2 control-label']) !!}
         <div class="col-md-10">
             {!! Form::select('authority',$authority,null,['class'=>'form-control']) !!}
+            @if ($errors->has('authority'))
+                <span class="form-span-error">* 请正确选择权限</span>
+            @endif
         </div>
     </div>
     <div class="form-group row">
         {!! Form::label('email','邮箱',['class' => 'col-md-2 control-label']) !!}
         <div class="col-md-10">
             {!! Form::text('email',null,['class' => 'form-control']) !!}
+            @if ($errors->has('email'))
+                <span class="form-span-error">* 请正确输入邮箱</span>
+            @endif
         </div>
     </div>
     <div class="form-group row">
         {!! Form::label('password','密码',['class' => 'col-md-2 control-label']) !!}
         <div class="col-md-10">
             {!! Form::password('password',['class' => 'form-control']) !!}
+            @if ($errors->has('password'))
+                <span class="form-span-error">* 请正确输入密码</span>
+            @endif
         </div>
     </div>
 

@@ -48,3 +48,8 @@
     font-size: 16px;
     margin-top: 15px;
 }
+
+.form-span-error {
+    font-size: 12px;
+    color: red;
+}

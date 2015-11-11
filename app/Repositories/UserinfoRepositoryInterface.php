@@ -22,5 +22,5 @@ interface UserinfoRepositoryInterface
     public function selectOneUserinfo($id);
 
     //搜索姓名手机身份证
-    public function search($field, $data);
+    public function search($req,$field, $data);
 }

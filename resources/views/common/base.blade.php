@@ -24,12 +24,12 @@
 <script src="/assets/sweetalert/sweetalert.min.js"></script>
 <script>
     @if(count($errors)>0)
-    sweetAlert("对不起", "Sorry", "error");
+        sweetAlert("对不起", "Sorry", "error");
     @endif
     @if(session('status0'))
         sweetAlert("对不起", "{{session('status0')}}", "error");
     @endif
-      @if(session('status1'))
+    @if(session('status1'))
         sweetAlert("OK", "{{session('status1')}}", "success");
     @endif
 </script>
