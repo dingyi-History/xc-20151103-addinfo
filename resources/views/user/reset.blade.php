@@ -22,9 +22,9 @@
                 </div>
             </div>
             <div class="form-group row">
-                {!! Form::label('new_password_confirmiation','确认密码',['class' => 'col-md-2 control-label']) !!}
+                {!! Form::label('new_password_confirmation','确认密码',['class' => 'col-md-2 control-label']) !!}
                 <div class="col-md-10">
-                    {!! Form::password('new_password_confirmiation',['class' => 'form-control']) !!}
+                    {!! Form::password('new_password_confirmation',['class' => 'form-control']) !!}
                 </div>
             </div>
             <div class="form-group row">

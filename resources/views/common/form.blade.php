@@ -58,7 +58,7 @@
     <div class="form-group row">
         {!! Form::label('birthday','生日',['class' => 'col-md-2 control-label']) !!}
         <div class="col-md-10">
-            {!! Form::input('date','birthday',date('Y-m-d'),['class' => ' form-control','style' => 'height:38px;']) !!}
+            {!! Form::input('date','birthday',date('Y-m-d'),['class' => ' form-control','style' => 'height:38px;','placeholder' => '格式:1990-10-1']) !!}
         </div>
     </div>
     <div class="form-group row">
