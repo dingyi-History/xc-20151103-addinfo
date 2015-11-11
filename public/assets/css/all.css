@@ -1,46 +1,49 @@
-.shadow-z-1{
-    border:1px solid #C9DAE1;
+.shadow-z-1 {
+    border: 1px solid #C9DAE1;
     border-radius: 3px;
 }
-.create-title{
+
+.create-title {
     height: 100px;
-    width:100%;
+    width: 100%;
     background: #00b388;
     color: #FFFFFF;
     line-height: 100px;
 }
 
-.create-title  h1{
+.create-title h1 {
     line-height: 100px;
     font-size: 32px;
 }
-.create-form{
+
+.create-form {
     margin-top: 30px;
     margin-bottom: 30px;
     max-width: 900px;
-    padding:0 40px 20px 40px;
+    padding: 0 40px 20px 40px;
 }
 
-.create-form-title{
+.create-form-title {
     height: 40px;
     width: 140px;
     background: #00b388;
     color: #FFFFFF;
     font-size: 20px;
-    padding:0px 10px 5px 10px;
+    padding: 0px 10px 5px 10px;
     margin-bottom: 30px;
 }
-.index-table{
+
+.index-table {
     padding: 30px 20px;
 }
 
-.login-form-base{
+.login-form-base {
     max-width: 600px;
-    padding:0 40px 20px 40px;
+    padding: 0 40px 20px 40px;
     margin-top: 80px;
 }
 
-.show-who{
+.show-who {
     color: gray;
     font-size: 16px;
     margin-top: 15px;

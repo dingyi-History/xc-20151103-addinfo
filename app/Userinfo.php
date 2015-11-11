@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Userinfo extends Model
 {
-    protected  $table ='userinfos';
+    protected $table = 'userinfos';
 
     protected $fillable = [
         'phone',
-        'name' ,
+        'name',
         'email',
         'identity',
         'sex',
@@ -25,7 +25,7 @@ class Userinfo extends Model
         'degree',
         'school',
         'major',
-        'profession' ,
+        'profession',
         'qq',
         'weibo',
         'weixin',
@@ -40,13 +40,19 @@ class Userinfo extends Model
     //多个信息对应一个录入信息的人
     public function user()
     {
-        return $this->belongsTo('App\User','addman_id','id');
+        return $this->belongsTo('App\User', 'addman_id', 'id');
     }
 
     //格式化生日时间
     public function setBirthdayAttribute($birthday)
     {
-        return $this->attributes['birthday'] = Carbon::createFromFormat('Y-m-d',$birthday);
+        return $this->attributes['birthday'] = Carbon::createFromFormat('Y-m-d', $birthday);
+    }
+
+    //userinfo按照用户ID倒序
+    public function scopeOrdered($query)
+    {
+        $query->OrderBy('userinfos.id', 'desc');
     }
 
 }

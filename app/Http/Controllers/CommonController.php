@@ -14,49 +14,14 @@ use App\Userinfo;
 
 class CommonController extends Controller
 {
-    protected $statusCode = 200;
-
-    //反馈状态码
-    public function getStatusCode()
+    //反馈结果
+    public function responseResult($res, $req, $msg0, $msg1, $url)
     {
-        return $this->statusCode;
-    }
-
-    public function setStatusCode($statusCode)
-    {
-        $this->statusCode = $statusCode;
-        return $this;
-    }
-
-    //404错误
-    public function responseNotFound($msg = 'Not Found')
-    {
-        return $this->resjson($msg);
-    }
-
-    //返回错误
-    public function responseError($msg)
-    {
-        return $this->responese([
-            'status' => 'failed',
-            'status_code' => $this->getStatusCode(),
-            'msg' => $msg
-        ]);
-    }
-
-    //返回成功
-    public function responseSuccess($data,$msg = 'ok')
-    {
-        return $this->responese([
-            'status_code' => $this->statusCode,
-            'status' => 'success',
-            'msg' => $msg,
-            'data' => $data
-        ]);
-    }
-    //json响应
-    public function responese($data)
-    {
-        return \Response::json($data);
+        if ($res) {
+            $req->session()->flash('status1', $msg1);
+        } else {
+            $req->session()->flash('status0', $msg0);
+        }
+        return redirect($url);
     }
 }

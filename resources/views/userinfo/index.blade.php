@@ -24,26 +24,25 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <fieldset>
-            <div class="form-group row">
-                {!! Form::label('name','真实姓名',['class' => 'col-md-2 control-label']) !!}
-                <div class="col-md-3">
-                    {!! Form::text('name',null,['class' => 'form-control']) !!}
-                </div>
-                {!! Form::label('name','手机号',['class' => 'col-md-2 control-label']) !!}
-                <div class="col-md-3">
-                    {!! Form::text('name',null,['class' => 'form-control']) !!}
-                </div>
-                {!! Form::label('name','身份证号',['class' => 'col-md-2 control-label']) !!}
-                <div class="col-md-3">
-                    {!! Form::text('name',null,['class' => 'form-control']) !!}
-                </div>
-                <div class="col-sm-1">
-                    <button type="submit" class="btn btn-success-outline btn-block">查询</button>
-                </div>
-            </div>
-        </fieldset>
+    <div class="index-table">
+        {!! Form::open(['url'=>'/userinfo/search','class' => 'pull-left']) !!}
+        {!! Form::label('name','姓名',['class' => 'col-md-1 control-label']) !!}
+        <div class="col-md-2">
+            {!! Form::text('name',null,['class' => 'form-control']) !!}
+        </div>
+        {!! Form::label('phone','手机号',['class' => 'col-md-1 control-label']) !!}
+        <div class="col-md-2">
+            {!! Form::text('phone',null,['class' => 'form-control']) !!}
+        </div>
+        {!! Form::label('identity','身份证',['class' => 'col-md-1 control-label']) !!}
+        <div class="col-md-2">
+            {!! Form::text('identity',null,['class' => 'form-control']) !!}
+        </div>
+        <div class="col-sm-2">
+            <button type="submit" class="btn btn-success-outline">查询</button>
+            <a href="userinfo" class="btn btn-primary-outline">全部</a>
+        </div>
+        {!! Form::close() !!}
     </div>
     <div class="index-table table-responsive">
         <table class="table table-bordered table-hover table-striped  shadow-z-1">

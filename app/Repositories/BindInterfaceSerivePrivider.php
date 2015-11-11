@@ -10,7 +10,8 @@ namespace App\Repositories;
 
 use Illuminate\Support\ServiceProvider;
 
-class BindInterfaceSerivePrivider extends ServiceProvider {
+class BindInterfaceSerivePrivider extends ServiceProvider
+{
 
     public function register()
     {

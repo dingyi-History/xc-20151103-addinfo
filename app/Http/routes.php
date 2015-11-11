@@ -23,22 +23,13 @@ Route::group(['prefix' => 'auth'], function () {
     get('logout', 'Auth\AuthController@getLogout');
 });
 
-//密码重置
-Route::group(['prefix' => 'password'], function () {
-// 发送密码重置链接路由
-    get('email', 'Auth\PasswordController@getEmail');
-    post('email', 'Auth\PasswordController@postEmail');
-// 密码重置路由
-    get('reset/{token}', 'Auth\PasswordController@getReset');
-    post('reset', 'Auth\PasswordController@postReset');
-});
-
 //登录用户才能访问进行用户信息操作
 Route::group(['middleware' => 'auth'], function () {
     resource('userinfo', 'UserinfosController');
+    post('userinfo/search', 'UserinfosController@search');
     //修改密码
-    get('/users/resetpwd','UsersController@showreset');
-    post('/users/resetpwd','UsersController@updatereset');
+    get('/users/resetpwd', 'UsersController@showreset');
+    post('/users/resetpwd', 'UsersController@updatereset');
 });
 
 //员工管理

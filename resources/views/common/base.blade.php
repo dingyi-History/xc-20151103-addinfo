@@ -27,10 +27,10 @@
     sweetAlert("对不起", "Sorry", "error");
     @endif
     @if(session('status0'))
-        sweetAlert("对不起","{{session('status0')}}","error");
+        sweetAlert("对不起", "{{session('status0')}}", "error");
     @endif
       @if(session('status1'))
-        sweetAlert("OK","{{session('status1')}}","success");
+        sweetAlert("OK", "{{session('status1')}}", "success");
     @endif
 </script>
 @yield('js')

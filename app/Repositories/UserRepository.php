@@ -19,9 +19,6 @@ class UserRepository implements UserRepositoryInterface
 
     public function getDepUser($dep_id)
     {
-        return User::where('dep_id',$dep_id)->Paginate(env('PAGE_ROWS'));
+        return User::where('dep_id', $dep_id)->Paginate(env('PAGE_ROWS'));
     }
-
-
-
 }

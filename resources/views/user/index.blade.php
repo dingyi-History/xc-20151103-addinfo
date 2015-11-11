@@ -49,13 +49,17 @@
                     <td>{{$user->realname}}</td>
                     <th>{{$user->email}}</th>
                     <td>
-                    <?php
-                    switch($user->authority)
-                    {
-                        case 1: echo '系统管理员';break;
-                        case 2: echo '部门管理员';break;
-                        default:echo '员工';
-                    }?></td>
+                        <?php
+                        switch ($user->authority) {
+                            case 1:
+                                echo '系统管理员';
+                                break;
+                            case 2:
+                                echo '部门管理员';
+                                break;
+                            default:
+                                echo '员工';
+                        }?></td>
                     <td>
                         <a href="/users/{{$user->id}}/edit" class="btn btn-info-outline">编辑</a>
 

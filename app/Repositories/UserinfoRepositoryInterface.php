@@ -20,4 +20,7 @@ interface UserinfoRepositoryInterface
 
     //根据$id获取用户信息
     public function selectOneUserinfo($id);
+
+    //搜索姓名手机身份证
+    public function search($field, $data);
 }

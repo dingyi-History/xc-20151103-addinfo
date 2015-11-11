@@ -11,9 +11,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 //员工管理
-class UsersController extends Controller
+class UsersController extends CommonController
 {
     protected $users;
     protected $auth;
@@ -35,8 +36,7 @@ class UsersController extends Controller
                 $users = $this->users->getDepUser($this->auth['dep_id']);
                 break;
             default :
-                $request->session()->flash('status0', '你没有权限');
-                return redirect('/');
+                return $this->responseResult(null, $request, '你没有权限', '', '/');
         }
         return view('user.index', compact('users'));
     }
@@ -44,81 +44,60 @@ class UsersController extends Controller
     //新建员工的页面
     public function create(Request $request)
     {
-        if ($request->user()->can('see-all') || $request->user()->can('see-dep')) {
-            $deps = $this->getDep();
-            $authority = $this->getAuthority($request);
-            return view('user.create', compact('deps', 'authority'));
-        } else {
-            abort(403);
-        }
+        $this->iscan($request);
+
+        $deps = $this->getDep();
+        $authority = $this->getAuthority($request);
+        return view('user.create', compact('deps', 'authority'));
     }
 
     //存储新建操作
     public function store(Requests\UsersRequest $request)
     {
-        if ($request->user()->can('see-all') || $request->user()->can('see-dep')) {
-            $input = $request->all();
-            $input['password'] = bcrypt($input['password']);
-            $res = User::create($input);
-            if ($res) {
-                $request->session()->flash('status1', '添加成功');
-                return redirect('/users');
-            }
-        } else {
-            abort(403);
-        }
+        $this->iscan($request);
+
+        $input = $request->all();
+        $input['password'] = bcrypt($input['password']);
+        $res = User::create($input);
+        return $this->responseResult($res, $request, '添加失败', '添加成功', '/users');
     }
 
     //显示编辑员工
     public function edit(Request $request, $id)
     {
-        if ($request->user()->can('see-all') || $request->user()->can('see-dep')) {
-            $user = User::find($id);
-            $user['password'] = null;
-            $deps = $this->getDep();
-            $authority = $this->getAuthority($request);
-            return view('user.edit', compact('user', 'deps', 'authority'));
-        } else {
-            abort(403);
-        }
+        $this->iscan($request);
+
+        $user = User::find($id);
+        $user['password'] = null;
+        $deps = $this->getDep();
+        $authority = $this->getAuthority($request);
+        return view('user.edit', compact('user', 'deps', 'authority'));
     }
 
     //更新员工信息
     public function update(Requests\UsersRequest $request, $id)
     {
-        if ($request->user()->can('see-all') || $request->user()->can('see-dep')) {
-            $user = User::find($id);
-            $input = $request->all();
-            if (isset($input['password']) && $input['password'] != '') {
-                $input['password'] = bcrypt($request->input('password'));
-            } else {
-                $input['password'] = $user['password'];
-            }
-            $res = $user->update($input);
-            if ($res) {
-                $request->session()->flash('status1', '保存成功');
-                return redirect('/users');
-            }
-        } else {
-            abort(403);
-        }
+        $this->iscan($request);
 
+        $user = User::find($id);
+        $input = $request->all();
+        if (isset($input['password']) && $input['password'] != '') {
+            $input['password'] = bcrypt($request->input('password'));
+        } else {
+            $input['password'] = $user['password'];
+        }
+        $res = $user->update($input);
+        return $this->responseResult($res, $request, '保存失败', '保存成功', '/users');
     }
 
     //删除员工
     public function destroy(Request $request, $id)
     {
-        if ($request->user()->can('see-all') || $request->user()->can('see-dep')) {
-            $user = User::find($id);
-            $res = $user->delete();
-            if ($res) {
-                $request->session()->flash('status1', '删除成功');
-                return redirect('/users');
-            }
-        } else {
-            abort(403);
-        }
+        $this->iscan($request);
 
+        $user = User::find($id);
+        $res = $user->delete();
+        return $this->responseResult($res, $request, '删除失败', '删除成功', '/users');
     }
 
     //显示密码修改
@@ -130,24 +109,29 @@ class UsersController extends Controller
     //更改密码
     public function updatereset(Request $request)
     {
+        $this->validate($request, [
+            'old_password' => 'required',
+            'new_password' => 'required | confirmed',
+        ]);
         $user = User::find($this->auth['id']);
         $input = $request->all();
         $old_pwd0 = $user['password'];
-        $old_pwd1 = bcrypt($input['old_password']);//加密新输入的密码
-        $new_pwd = $input['new_password'];
-        dd($old_pwd1.'<br/>'.$old_pwd0);
-        if ($old_pwd0 == $old_pwd1) {
-            dd('可以修改密码');
-            $res = $user->update($new_pwd);
-            if ($res) {
-                $request->session()->flash('status1', '修改成功');
-                return redirect('/userinfo');
-            }
+        $old_pwd1 = $input['old_password'];
+        if (Hash::check($old_pwd1, $old_pwd0)) {
+            $user->password = bcrypt($input['new_password']);
+            $res = $user->save();
+            return $this->responseResult($res, $request, '修改失败', '修改成功', '/users');
         }
-        $request->session()->flash('status0', '修改失败');
-        return redirect('/users/resetpwd');
+        return $this->responseResult(null, $request, '原密码不正确', '', '/users');
     }
 
+    //判断是否有查看员工的权限
+    private function iscan($request)
+    {
+        if ($request->user()->cannot('see-all') || $request->user()->cannot('see-dep')) {
+            return redirect('userinfo');
+        }
+    }
 
     //获取部门数据
     private function getDep()

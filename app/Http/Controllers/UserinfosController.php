@@ -38,12 +38,10 @@ class UserinfosController extends CommonController
             case $req->user()->can('see-me'):
                 $datas = $this->userinfos->selectMe($this->user['id']);
                 break;
-            default:
-                break;
         }
 
         if ($datas) return view('userinfo.index', compact('datas'));
-        return $this->responseResult(null, $req, '查询失败', null, '');
+        return $this->responseResult(null, $req, '查询失败', null, 'userinfo');
     }
 
     //显示信息录入页面
@@ -60,7 +58,7 @@ class UserinfosController extends CommonController
         $input['addman_id'] = $this->user['id'];
         $res = Userinfo::create($input);
 
-        return $this->responseResult($res, $req, '存储失败', '保存成功', '');
+        return $this->responseResult($res, $req, '存储失败', '保存成功', 'userinfo');
     }
 
     //显示对应信息详情
@@ -69,7 +67,7 @@ class UserinfosController extends CommonController
         $userinfo = $this->userinfos->selectOneUserinfo($id);
 
         if ($userinfo) return view('userinfo.show', compact('userinfo'));
-        return $this->responseResult(null, $req, '查询失败', null, '');
+        return $this->responseResult(null, $req, '查询失败', null, 'userinfo');
     }
 
     //编辑页面
@@ -79,32 +77,45 @@ class UserinfosController extends CommonController
         $data = $this->selectData();
 
         if ($userinfo) return view('userinfo.edit', compact('userinfo', 'data'));
-        return $this->responseResult(null, $req, '查询失败', null, $id);
+        return $this->responseResult(null, $req, '查询失败', null, 'userinfo/' . $id);
     }
 
     //更新信息
     public function update(Requests\UserinfoRequest $req, $id)
     {
         $res = $this->userinfos->selectOneUserinfo($id)->update($req->all());
-        return $this->responseResult($res, $req, '保存失败', '保存成功', $id);
+        return $this->responseResult($res, $req, '保存失败', '保存成功', 'userinfo/' . $id);
     }
 
     //删除信息
     public function destroy(Request $req, $id)
     {
         $res = $this->userinfos->selectOneUserinfo($id)->delete();
-        return $this->responseResult($res, $req, '删除失败', '删除成功', '');
+        return $this->responseResult($res, $req, '删除失败', '删除成功', 'userinfo');
     }
 
-    //反馈结果
-    private function responseResult($res, $req, $msg0, $msg1, $url)
+    //搜索姓名/手机/身份证
+    public function search(Request $req)
     {
-        if ($res) {
-            $req->session()->flash('status1', $msg1);
-        } else {
-            $req->session()->flash('status0', $msg0);
+        $name = $req->input('name');
+        $phone = $req->input('phone');
+        $identity = $req->input('identity');
+
+        switch (true) {
+            case !empty($name):
+                $datas = $this->userinfos->search('name', $name);
+                break;
+            case !empty($phone):
+                $datas = $this->userinfos->search('phone', $phone);
+                break;
+            case !empty($identity):
+                $datas = $this->userinfos->search('identity', $identity);
+                break;
+            default:
+                return $this->responseResult(null, $req, '请填写查询条件', '', 'userinfo');
         }
-        return redirect('userinfo/' . $url);
+        if ($datas->total() > 0) return view('userinfo.index', compact('datas'));
+        return $this->responseResult(null, $req, '查询不到你要的内容', '', 'userinfo');
     }
 
     //下拉框参数

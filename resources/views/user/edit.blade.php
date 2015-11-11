@@ -14,5 +14,4 @@
         @include('common.user_form',['form_title' => '编辑信息'])
         {!! Form::close() !!}
     </div>
-
 @endsection
