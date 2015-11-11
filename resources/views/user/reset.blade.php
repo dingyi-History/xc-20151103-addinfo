@@ -13,18 +13,27 @@
                 {!! Form::label('old_password','原密码',['class' => 'col-md-2 control-label']) !!}
                 <div class="col-md-10">
                     {!! Form::password('old_password',['class' => 'form-control']) !!}
+                    @if ($errors->has('old_password'))
+                        <span class="form-span-error">* 请正确输入原密码</span>
+                    @endif
                 </div>
             </div>
             <div class="form-group row">
                 {!! Form::label('new_password','新密码',['class' => 'col-md-2 control-label']) !!}
                 <div class="col-md-10">
                     {!! Form::password('new_password',['class' => 'form-control']) !!}
+                    @if ($errors->has('new_password'))
+                        <span class="form-span-error">* 请正确输入新密码</span>
+                    @endif
                 </div>
             </div>
             <div class="form-group row">
                 {!! Form::label('new_password_confirmation','确认密码',['class' => 'col-md-2 control-label']) !!}
                 <div class="col-md-10">
                     {!! Form::password('new_password_confirmation',['class' => 'form-control']) !!}
+                    @if ($errors->has('new_password_confirmation'))
+                        <span class="form-span-error">* 两次密码不一致</span>
+                    @endif
                 </div>
             </div>
             <div class="form-group row">

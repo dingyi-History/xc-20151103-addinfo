@@ -36,7 +36,7 @@ class UsersController extends CommonController
                 $users = $this->users->getDepUser($this->auth['dep_id']);
                 break;
             default :
-                return $this->responseResult(null, $request, '你没有权限', '', '/');
+                return $this->responseResult(null, $request, '你没有权限', '', 'userinfo');
         }
         return view('user.index', compact('users'));
     }
@@ -113,16 +113,17 @@ class UsersController extends CommonController
             'old_password' => 'required',
             'new_password' => 'required | confirmed',
         ]);
+
         $user = User::find($this->auth['id']);
         $input = $request->all();
         $old_pwd0 = $user['password'];
         $old_pwd1 = $input['old_password'];
         if (Hash::check($old_pwd1, $old_pwd0)) {
-            $user->password = bcrypt($input['new_password']);
+            $user->password = Hash::make($input['new_password']);
             $res = $user->save();
-            return $this->responseResult($res, $request, '修改失败', '修改成功', '/users');
+            return $this->responseResult($res, $request, '修改失败', '修改成功', '/userinfo');
         }
-        return $this->responseResult(null, $request, '原密码不正确', '', '/users');
+        return $this->responseResult(null, $request, '原密码不正确', '', '/users/resetpwd');
     }
 
     //判断是否有查看员工的权限

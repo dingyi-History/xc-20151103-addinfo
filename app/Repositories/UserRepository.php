@@ -7,8 +7,8 @@
  */
 namespace App\Repositories;
 
+use App\Department;
 use App\User;
-use Illuminate\Support\Facades\Crypt;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -19,6 +19,8 @@ class UserRepository implements UserRepositoryInterface
 
     public function getDepUser($dep_id)
     {
-        return User::where('dep_id', $dep_id)->Paginate(env('PAGE_ROWS'));
+        $dep = Department::find($dep_id);
+        $users = $dep->users()->Paginate(env('PAGE_ROWS'));
+        dd($dep);
     }
 }
