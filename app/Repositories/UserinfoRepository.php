@@ -35,9 +35,23 @@ class UserinfoRepository implements \App\Repositories\UserinfoRepositoryInterfac
             ->Paginate(env('PAGE_ROWS'));
     }
 
+    public function OneUserinfo($id)
+    {
+        $userinfo = Userinfo::with('user')
+            ->leftjoin('users','users.id','=','userinfos.addman_id')
+            ->where('userinfos.id',$id)
+            ->get();
+        return $userinfo;
+    }
+
     public function selectOneUserinfo($id)
     {
-        return Userinfo::find($id);
+        $userinfo = Userinfo::find($id)
+            ->with('user')
+            ->leftjoin('users','users.id','=','userinfos.addman_id')
+            ->where('userinfos.id',$id)
+            ->get();
+        return $userinfo->first();
     }
 
     public function search($req, $field, $data)

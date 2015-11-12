@@ -64,7 +64,6 @@ class UserinfosController extends CommonController
     public function show(Request $req, $id)
     {
         $userinfo = $this->userinfos->selectOneUserinfo($id);
-
         if ($userinfo) return view('userinfo.show', compact('userinfo'));
         return $this->responseResult(null, $req, '查询失败', null, 'userinfo');
     }

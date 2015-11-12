@@ -12,7 +12,7 @@
             </div>
             <div class="pull-right">
                 @cannot('see-me')
-                <p class="show-who">由{{$userinfo->addman_id}}在{{$userinfo->created_at}}录入</p>
+                <p class="show-who">由{{$userinfo->realname}}在{{$userinfo->created_at}}录入</p>
                 @endcannot
                 @can('see-me')
                 <p class="show-who">在{{$userinfo->created_at}}录入</p>
