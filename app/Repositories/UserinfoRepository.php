@@ -29,7 +29,7 @@ class UserinfoRepository implements \App\Repositories\UserinfoRepositoryInterfac
 
     public function selectMe($user_id)
     {
-        return User::find($user_id)
+        return User::findOrFail($user_id)
             ->userinfos()
             ->ordered()
             ->Paginate(env('PAGE_ROWS'));

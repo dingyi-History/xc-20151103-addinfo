@@ -39,7 +39,6 @@ class UserinfosController extends CommonController
                 $datas = $this->userinfos->selectMe($this->user['id']);
                 break;
         }
-
         if ($datas) return view('userinfo.index', compact('datas'));
         return $this->responseResult(null, $req, '查询失败', null, 'userinfo');
     }
@@ -103,13 +102,13 @@ class UserinfosController extends CommonController
 
         switch (true) {
             case !empty($name):
-                $datas = $this->userinfos->search($req,'name', $name);
+                $datas = $this->userinfos->search($req, 'name', $name);
                 break;
             case !empty($phone):
-                $datas = $this->userinfos->search($req,'phone', $phone);
+                $datas = $this->userinfos->search($req, 'phone', $phone);
                 break;
             case !empty($identity):
-                $datas = $this->userinfos->search($req,'identity', $identity);
+                $datas = $this->userinfos->search($req, 'identity', $identity);
                 break;
             default:
                 return $this->responseResult(null, $req, '请填写查询条件', '', 'userinfo');

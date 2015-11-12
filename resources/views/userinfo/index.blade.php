@@ -26,15 +26,15 @@
 @section('content')
     <div class="index-table">
         {!! Form::open(['url'=>'/userinfo/search','class' => 'pull-left']) !!}
-        {!! Form::label('name','姓名',['class' => 'col-md-1 control-label']) !!}
+        {!! Form::label('name','姓名',['class' => 'col-md-1 control-label text-center','style' => 'line-height:40px;']) !!}
         <div class="col-md-2">
             {!! Form::text('name',null,['class' => 'form-control']) !!}
         </div>
-        {!! Form::label('phone','手机号',['class' => 'col-md-1 control-label']) !!}
+        {!! Form::label('phone','手机号',['class' => 'col-md-1 control-label text-center','style' => 'line-height:40px;']) !!}
         <div class="col-md-2">
             {!! Form::text('phone',null,['class' => 'form-control']) !!}
         </div>
-        {!! Form::label('identity','身份证',['class' => 'col-md-1 control-label']) !!}
+        {!! Form::label('identity','身份证',['class' => 'col-md-1 control-label text-center','style' => 'line-height:40px;']) !!}
         <div class="col-md-2">
             {!! Form::text('identity',null,['class' => 'form-control']) !!}
         </div>

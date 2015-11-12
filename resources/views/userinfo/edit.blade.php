@@ -10,11 +10,4 @@
         @include('common.form',['form_title' => '编辑用户信息'])
         {!! Form::close() !!}
     </div>
-    @if($errors->any())
-        <ul class="alert alert-danger">
-            @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
 @endsection

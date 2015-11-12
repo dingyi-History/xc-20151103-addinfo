@@ -7,20 +7,27 @@
  */
 namespace App\Repositories;
 
-use App\Department;
 use App\User;
 
 class UserRepository implements UserRepositoryInterface
 {
     public function getAllUser()
     {
-        return $users = User::OrderBy('dep_id')->Paginate(env('PAGE_ROWS'));
+        return $this->alluser()->Paginate(env('PAGE_ROWS'));
     }
 
     public function getDepUser($dep_id)
     {
-        $dep = Department::find($dep_id);
-        $users = $dep->users()->Paginate(env('PAGE_ROWS'));
-        dd($dep);
+        $users = $this->alluser();
+        $dep_users = $users->where('dep_id', $dep_id)->Paginate(env('PAGE_ROWS'));
+        return $dep_users;
+    }
+
+    private function alluser()
+    {
+        $users = User::with('dep')
+            ->leftJoin('departments', 'departments.id', '=', 'users.dep_id')
+            ->OrderBy('dep_id');
+        return $users;
     }
 }

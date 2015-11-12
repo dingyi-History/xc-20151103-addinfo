@@ -23,9 +23,6 @@
 <script src="/assets/vuejs/app.js"></script>
 <script src="/assets/sweetalert/sweetalert.min.js"></script>
 <script>
-    @if(count($errors)>0)
-        sweetAlert("对不起", "Sorry", "error");
-    @endif
     @if(session('status0'))
         sweetAlert("对不起", "{{session('status0')}}", "error");
     @endif
