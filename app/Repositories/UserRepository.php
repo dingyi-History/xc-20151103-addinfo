@@ -19,13 +19,13 @@ class UserRepository implements UserRepositoryInterface
     public function getDepUser($dep_id)
     {
         $users = $this->alluser();
-        $dep_users = $users->where('dep_id', $dep_id)->Paginate(env('PAGE_ROWS'));
-        return $dep_users;
+        return $users->where('dep_id', $dep_id)->Paginate(env('PAGE_ROWS'));
     }
 
     private function alluser()
     {
         $users = User::with('dep')
+            ->select('users.*', 'departments.dep_name')
             ->leftJoin('departments', 'departments.id', '=', 'users.dep_id')
             ->OrderBy('dep_id');
         return $users;

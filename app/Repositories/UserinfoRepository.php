@@ -21,7 +21,7 @@ class UserinfoRepository implements \App\Repositories\UserinfoRepositoryInterfac
 
     public function selectDep($dep_id)
     {
-        return Department::findOrFail($dep_id)
+        return Department::find($dep_id)
             ->userinfos()
             ->ordered()
             ->Paginate(env('PAGE_ROWS'));
@@ -29,7 +29,7 @@ class UserinfoRepository implements \App\Repositories\UserinfoRepositoryInterfac
 
     public function selectMe($user_id)
     {
-        return User::findOrFail($user_id)
+        return User::find($user_id)
             ->userinfos()
             ->ordered()
             ->Paginate(env('PAGE_ROWS'));
@@ -38,7 +38,7 @@ class UserinfoRepository implements \App\Repositories\UserinfoRepositoryInterfac
     public function selectOneUserinfo($id)
     {
         $userinfo = Userinfo::with('user')
-            ->select('userinfos.*','users.realname')
+            ->select('userinfos.*', 'users.realname')
             ->leftjoin('users', 'users.id', '=', 'userinfos.addman_id')
             ->where('userinfos.id', $id)
             ->get();
