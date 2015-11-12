@@ -4,7 +4,7 @@
             <h1>{{$header_title}}</h1>
         </div>
         <div class="pull-right">
-            <a href="{{$header_btn_url}}" class="btn btn-primary">{{ $header_btn }}</a>
+            <a href="{{$header_btn_url}}" class="btn btn-info">{{ $header_btn }}</a>
 
             <div class="dropdown" style="display: inline-block">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1"

@@ -49,8 +49,7 @@ class UserinfoRepository implements \App\Repositories\UserinfoRepositoryInterfac
     {
         switch ($req) {
             case $req->user()->can('see-all'):
-                return Userinfo::where($field, 'like', '%' . $data . '%')
-                    ->ordered()
+                return $this->commonWhere($field, $data)
                     ->Paginate(env('PAGE_ROWS'));
                 break;
             case $req->user()->can('see-dep'):
@@ -62,11 +61,15 @@ class UserinfoRepository implements \App\Repositories\UserinfoRepositoryInterfac
                     ->Paginate(env('PAGE_ROWS'));
                 break;
             case $req->user()->can('see-me'):
-                return Userinfo::where($field, 'like', '%' . $data . '%')
+                return $this->commonWhere($field, $data)
                     ->where('addman_id', $req->user()['id'])
-                    ->ordered()
                     ->Paginate(env('PAGE_ROWS'));
                 break;
         }
+    }
+
+    private function commonWhere($field, $data)
+    {
+        return Userinfo::where($field, 'like', '%' . $data . '%')->ordered();
     }
 }
