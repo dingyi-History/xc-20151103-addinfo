@@ -16,6 +16,16 @@
 {{-- 继承后插入的内容 --}}
 @yield('content')
 
+@if(session('status2'))
+    <div id="status" class="alert alert-danger pull-right" role="alert"
+         style="width: 500px;position: absolute;bottom: 50px;right: 50px;">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>对不起!</strong> {{session('status2')}}
+    </div>
+@endif
+
 {{-- 包含页脚 --}}
 <script src="/assets/boot4/jquery.min.js"></script>
 <script src="/assets/boot4/bootstrap.min.js"></script>
@@ -28,6 +38,11 @@
     @if(session('status1'))
         swal("OK", "{{session('status1')}}", "success");
     @endif
+
+    $(document).ready(function () {
+        $("#status").stop(true, false).animate({"right": -500}, 5000);
+    });
+
 </script>
 @yield('js')
 </body>

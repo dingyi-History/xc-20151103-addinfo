@@ -11,7 +11,15 @@
 @section('content')
     <div class="container create-form shadow-z-1">
         {!! Form::model($user,['method'=>'PATCH','url'=>'/users/'.$user->id]) !!}
-        @include('common.user_form',['form_title' => '编辑信息'])
+        @include('common.user_form',['form_title' => '编辑信息','pwdplaceholder' => '不输入即保持原密码',
+        'vbinderror' => 'is_error.password',
+        'vbindsuccess' => 'is_ok.editpwd',
+        'pwdmodel' => "users.password" ,
+        'pwdkey' => 'editpwdvalidate',
+        'errormodel' => ''])
         {!! Form::close() !!}
     </div>
+@endsection
+@section('js')
+    <script src="{{asset('assets/vuejs/users_form_validate.js')}}"></script>
 @endsection

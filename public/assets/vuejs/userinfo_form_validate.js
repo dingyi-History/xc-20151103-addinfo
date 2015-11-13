@@ -60,7 +60,7 @@ new Vue({
             this.namevalidate();
             this.phonevalidate();
             this.identityvalidate();
-            
+
         }
 
     }

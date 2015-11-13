@@ -78,7 +78,11 @@ class UsersController extends CommonController
     public function update(Requests\UsersRequest $request, $id)
     {
         $this->iscan($request);
-
+        $pwd = $request->input('password');
+        if ($pwd != '' || strlen($pwd) < 6 || strlen($pwd) > 16) {
+            $request->session()->flash('status2', '密码为6到16位数字或字母');
+            return back();
+        }
         $user = User::find($id);
         $input = $request->all();
         if (isset($input['password']) && $input['password'] != '') {
