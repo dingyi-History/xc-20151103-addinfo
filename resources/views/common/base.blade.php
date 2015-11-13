@@ -16,13 +16,22 @@
 {{-- 继承后插入的内容 --}}
 @yield('content')
 
-@if(session('status2'))
+@if(session('status0'))
     <div id="status" class="alert alert-danger pull-right" role="alert"
-         style="width: 500px;position: absolute;bottom: 50px;right: 50px;">
+         style="width:300px;position: absolute;bottom: 50px;right: 0px; text-align: center;">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <strong>对不起!</strong> {{session('status2')}}
+        <strong>对不起!</strong> {{session('status0')}}
+    </div>
+@endif
+@if(session('status1'))
+    <div id="status"   class="alert alert-success pull-right" role="alert"
+         style="width:300px;position: absolute;bottom: 50px;right: 0px; text-align: center;">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>OK!</strong> {{session('status1')}}
     </div>
 @endif
 
@@ -32,17 +41,19 @@
 <script src="/assets/vuejs/vue.min.js"></script>
 <script src="/assets/sweetalert/sweetalert.min.js"></script>
 <script>
-    @if(session('status0'))
+    @if(session('status2'))
         swal("对不起", "{{session('status0')}}", "error");
     @endif
-    @if(session('status1'))
+    @if(session('status3'))
         swal("OK", "{{session('status1')}}", "success");
     @endif
-
     $(document).ready(function () {
-        $("#status").stop(true, false).animate({"right": -500}, 5000);
-    });
+        $("#status").stop(true, false).animate({"right": 100}, 500);
+        setTimeout(function () {
+            $('#status').fadeOut(2000);
+        }, 2000)
 
+    });
 </script>
 @yield('js')
 </body>
