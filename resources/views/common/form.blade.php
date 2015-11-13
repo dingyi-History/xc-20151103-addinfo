@@ -1,28 +1,31 @@
 {!! Form::token() !!}
-<fieldset>
+<fieldset id="userinfo_form">
     <legend class="create-form-title">{{$form_title}}</legend>
-    <div class="form-group row">
+    <div class="form-group row" v-bind:class="{ 'has-error': is_error.name,'has-success':is_ok.name }">
         {!! Form::label('name','真实姓名',['class' => 'col-md-2 control-label']) !!}
         <div class="col-md-10">
-            {!! Form::text('name',null,['class' => 'form-control']) !!}
+            {!! Form::text('name',null,['class' => 'form-control','v-model' => 'userinfo.name' ,'@keyup' => "namevalidate", '@keydown' => "namevalidate"]) !!}
+            <span class="form-span-error pull-left" v-model="error.name" v-text="error.name"></span>
             @if ($errors->has('name'))
                 <span class="form-span-error">* 请输入姓名</span>
             @endif
         </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row" v-bind:class="{ 'has-error': is_error.phone,'has-success':is_ok.phone }">
         {!! Form::label('phone','手机号',['class' => 'col-md-2 control-label']) !!}
         <div class="col-md-10">
-            {!! Form::text('phone',null,['class' => 'form-control']) !!}
+            {!! Form::text('phone',null,['class' => 'form-control','v-model' => 'userinfo.phone' ,'@keyup' => "phonevalidate", '@keydown' => "phonevalidate"]) !!}
+            <span class="form-span-error pull-left" v-model="error.phone" v-text="error.phone"></span>
             @if ($errors->has('phone'))
                 <span class="form-span-error">* 请正确输入手机号</span>
             @endif
         </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row" v-bind:class="{ 'has-error': is_error.identity,'has-success':is_ok.identity }">
         {!! Form::label('identity','身份证号',['class' => 'col-md-2 control-label']) !!}
         <div class="col-md-10">
-            {!! Form::text('identity',null,['class' => 'form-control']) !!}
+            {!! Form::text('identity',null,['class' => 'form-control','v-model' => 'userinfo.identity' ,'@keyup' => "identityvalidate", '@keydown' => "identityvalidate"]) !!}
+            <span class="form-span-error pull-left" v-model="error.identity" v-text="error.identity"></span>
             @if ($errors->has('identity'))
                 <span class="form-span-error">* 请正确输入身份证号</span>
             @endif
@@ -212,9 +215,6 @@
         {!! Form::label('remark','备注',['class' => 'col-md-2 control-label']) !!}
         <div class="col-md-10">
             {!! Form::textarea('remark',null,['class' => ' form-control','rows' => '3','placeholder' => '无']) !!}
-            @if ($errors->has('remark'))
-                <span class="form-span-error">* 请正确输入备注</span>
-            @endif
         </div>
     </div>
     <div class="form-group row">

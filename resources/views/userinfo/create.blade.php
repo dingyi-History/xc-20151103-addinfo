@@ -11,3 +11,6 @@
         {!! Form::close() !!}
     </div>
 @endsection
+@section('js')
+    <script src="{{asset('assets/vuejs/userinfo_form_validate.js')}}"></script>
+@endsection

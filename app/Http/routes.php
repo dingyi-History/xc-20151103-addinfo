@@ -39,10 +39,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 //dingo/api
 $api = app('Dingo\Api\Routing\Router');
-$api->version('v1', ['middleware' => 'foo'], function ($api) {
-
+$api->version('v1', function ($api) {
+    Route::group(['prefix' => 'validate', 'namespace' => 'App\Api\Controllers'], function ($api) {
+        get('onephone', 'ValidateController@onephone');
+    });
 });
-
 
 //Oauth2登录
 Route::post('oauth/access_token', function () {

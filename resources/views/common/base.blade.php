@@ -20,14 +20,13 @@
 <script src="/assets/boot4/jquery.min.js"></script>
 <script src="/assets/boot4/bootstrap.min.js"></script>
 <script src="/assets/vuejs/vue.min.js"></script>
-<script src="/assets/vuejs/app.js"></script>
 <script src="/assets/sweetalert/sweetalert.min.js"></script>
 <script>
     @if(session('status0'))
-        sweetAlert("对不起", "{{session('status0')}}", "error");
+        swal("对不起", "{{session('status0')}}", "error");
     @endif
     @if(session('status1'))
-        sweetAlert("OK", "{{session('status1')}}", "success");
+        swal("OK", "{{session('status1')}}", "success");
     @endif
 </script>
 @yield('js')

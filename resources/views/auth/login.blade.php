@@ -14,28 +14,29 @@
                     <form class="form" method="post" action="/auth/login">
                         {!! csrf_field() !!}
                         <legend class="create-form-title">登录</legend>
-                        <div class="form-group row" v-bind:class="{ 'has-error': is_error_email }">
+                        <div class="form-group row" v-bind:class="{ 'has-error': is_error_email,'has-success':is_ok_email }">
                             <label for="name" class="col-md-3 control-label">邮箱</label>
 
                             <div class="col-md-9">
                                 <input type="email" class="form-control" id="name" placeholder="example@xici.net"
-                                       name="email"  v-model="email"   required onchange="emailvalid">
+                                       name="email"  v-model="email"   required @keyup="emailvalid" @keydown="emailvalid">
                                 <span class="form-span-error pull-left" v-model="error_email" v-text="error_email"></span>
                             </div>
                         </div>
-                        <div class="form-group row" v-bind:class="{ 'has-error': is_error_password }">
+                        <div class="form-group row" v-bind:class="{ 'has-error': is_error_password,'has-success':is_ok_password  }">
                             <label for="pwd" class="col-md-3 control-label">密码</label>
 
                             <div class="col-md-9">
                                 <input type="password" class="form-control" id="pwd" placeholder="密码"
-                                       name="password"  v-model="password" required  v-on:click="passwordvalid">
+                                       name="password"  v-model="password" required  @keyup="passwordvalid" @keydown="passwordvalid">
                                 <span class="form-span-error pull-left" v-model="error_password" v-text="error_password"></span>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="pull-right">
                                 <button type="reset" class="btn btn-secondary">重置</button>
-                                <button type="button" v-on:click="loginvalid" class="btn btn-success">GO</button>
+                                {{--<input type="button" v-on:click="submit" class="btn btn-success" value="GO"/>--}}
+                                <input type="submit" class="btn btn-success" value="GO" @click="submit"/>
                             </div>
                         </div>
                     </form>
@@ -47,4 +48,10 @@
 @section('js')
     <script src="{{asset('assets/loginbg/js/rAF.js')}}"></script>
     <script src="{{asset('assets/loginbg/js/demo-2.js')}}"></script>
+    <script src="{{asset('assets/vuejs/login_form_validate.js')}}"></script>
+    <script>
+        @if(count($errors) > 0 )
+            swal('登录失败','用户名和密码不匹配','error');
+        @endif
+    </script>
 @endsection

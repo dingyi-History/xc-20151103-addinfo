@@ -27,7 +27,7 @@ class UserinfoRequest extends Request
         $rules = [
             'phone' => 'required |  numeric | unique:userinfos,phone',
             'name' => 'required | string',
-            'email' => 'required | email',
+            'email' => 'email',
             'identity' => 'required |  unique:userinfos,identity',
             'sex' => 'required | in:未知,男,女',
             'relationship_status' => 'required | in:未知,单身,恋爱,订婚,已婚,离异,丧偶',
@@ -35,24 +35,24 @@ class UserinfoRequest extends Request
             'income_level' => 'required | in:未知,穷人,低收入,中等收入,高收入,富人',
             'blood_type' => 'required | in:未知,A,B,AB,O',
             'birthday' => 'required',
-            'residence' => 'required  |string',
-            'hometown' => 'required |string',
-            'degree' => 'required |string',
-            'school' => 'required |string',
-            'major' => 'required |string',
-            'profession' => 'required |string',
-            'qq' => 'required |  numeric',
-            'weibo' => 'required |string',
-            'weixin' => 'required |string',
-            'source' => 'required |string',
-            'user_id' => 'required |string',
-            'screen_name' => 'required |string',
-            'address' => 'required |string',
+            'residence' => 'string',
+            'hometown' => 'string',
+            'degree' => 'string',
+            'school' => 'string',
+            'major' => 'string',
+            'profession' => 'string',
+            'qq' => 'numeric',
+            'weibo' => 'string',
+            'weixin' => 'string',
+            'source' => 'string',
+            'user_id' => 'string',
+            'screen_name' => 'string',
+            'address' => 'string',
             'remark' => '',
         ];
 
         if ($this->method() == 'PATCH') {
-            $rules['phone'] = 'required | digits_between:11,11 | numeric ';
+            $rules['phone'] = 'required | numeric ';
             $rules['identity'] = 'required';
         }
         return $rules;
