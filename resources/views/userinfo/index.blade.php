@@ -40,7 +40,7 @@
         </div>
         <div class="col-sm-2">
             <button type="submit" class="btn btn-success-outline">查询</button>
-            <a href="userinfo" class="btn btn-primary-outline">全部</a>
+            <a href="/userinfo" class="btn btn-primary-outline">全部</a>
         </div>
         {!! Form::close() !!}
     </div>
@@ -84,4 +84,3 @@
         </div>
     </div>
 @endsection
-

@@ -42,10 +42,10 @@
 <script src="/assets/sweetalert/sweetalert.min.js"></script>
 <script>
     @if(session('status2'))
-        swal("对不起", "{{session('status0')}}", "error");
+        swal("对不起", "{{session('status2')}}", "error");
     @endif
     @if(session('status3'))
-        swal("OK", "{{session('status1')}}", "success");
+        swal("OK", "{{session('status3')}}", "success");
     @endif
     $(document).ready(function () {
         $("#status").stop(true, false).animate({"right": 100}, 500);

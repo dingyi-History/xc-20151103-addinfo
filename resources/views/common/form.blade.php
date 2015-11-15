@@ -17,7 +17,7 @@
             {!! Form::text('phone',null,['class' => 'form-control','v-model' => 'userinfo.phone' ,'@keyup' => "phonevalidate", '@keydown' => "phonevalidate"]) !!}
             <span class="form-span-error pull-left" v-model="error.phone" v-text="error.phone"></span>
             @if ($errors->has('phone'))
-                <span class="form-span-error">* 请正确输入手机号</span>
+                <span class="form-span-error">* 请正确输入手机号或手机号已存在</span>
             @endif
         </div>
     </div>
@@ -27,7 +27,7 @@
             {!! Form::text('identity',null,['class' => 'form-control','v-model' => 'userinfo.identity' ,'@keyup' => "identityvalidate", '@keydown' => "identityvalidate"]) !!}
             <span class="form-span-error pull-left" v-model="error.identity" v-text="error.identity"></span>
             @if ($errors->has('identity'))
-                <span class="form-span-error">* 请正确输入身份证号</span>
+                <span class="form-span-error">* 请正确输入身份证号或手机号已存在</span>
             @endif
         </div>
     </div>
