@@ -10,6 +10,7 @@
               role="form">
             @include('common.form',['form_title' => '添加用户信息'])
         </form>
+        <button class="btn btn-primary-outline" v-on:click="onephone">点击获取</button>
     </div>
 @endsection
 @section('js')

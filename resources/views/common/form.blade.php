@@ -16,7 +16,8 @@
     <div class="form-group row">
         {!! Form::label('phone','手机号',['class' => 'col-md-2 control-label']) !!}
         <div class="col-md-10">
-            {!! Form::text('phone',null,['class' => 'form-control','v-model' => 'model.phone','required','v-form-ctrl']) !!}
+            {!! Form::text('phone',null,['class' => 'form-control','v-model' => 'model.phone','required','v-form-ctrl','@keyup' => "onephone", '@keydown' => "onephone"]) !!}
+            <span class="form-span-error" v-if="model.onephone">* 手机号已存在</span>
             <div class="errors pull-left" v-if="myform.$submitted">
                 <span class="form-span-error" v-if="myform.phone.$error.required">* 请输入手机号</span>
             </div>
@@ -28,7 +29,8 @@
     <div class="form-group row">
         {!! Form::label('identity','身份证号',['class' => 'col-md-2 control-label']) !!}
         <div class="col-md-10">
-            {!! Form::text('identity',null,['class' => 'form-control','v-model' => 'model.identity','required','v-form-ctrl']) !!}
+            {!! Form::text('identity',null,['class' => 'form-control','v-model' => 'model.identity','required','v-form-ctrl','@keyup' => "oneidentity", '@keydown' => "oneidentity"]) !!}
+            <span class="form-span-error" v-if="model.oneidentity">* 身份证号已存在</span>
             <div class="errors pull-left" v-if="myform.$submitted">
                 <span class="form-span-error" v-if="myform.identity.$error.required">* 请输入身份证号</span>
             </div>

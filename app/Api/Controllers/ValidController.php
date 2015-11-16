@@ -4,38 +4,31 @@ namespace App\Api\Controllers;
 
 use App\Userinfo;
 use App\Api\Controllers;
+use Illuminate\Http\Request;
 
-class ValidateController extends BaseController
+class ValidController extends BaseController
 {
-
-    public function onephone(Request $request)
+    //验证手机号的唯一性
+    public function onephone($phone)
     {
-        //$phone = $request->input('phone');
-        // $res = Userinfo::where('phone',$phone)->get();
-        // if($res)
-        // {
-        //     //存在一样的手机号
-        // }else{
-        //     //不存在一样的手机号
-        //
-        // }
-        $user = Userinfo::all();
-        return $this->response->array($user->toArray());
+        $res = Userinfo::where('phone', $phone)->get();
+        return $this->result($res);
     }
 
-    public function oneidentity(Request $request)
+    //验证身份证唯一性
+    public function oneidentity($identity)
     {
-        return 'ok';
-        $identity = $request->input('identity');
-        $res = Userinfo::where('identity',$identity)->get();
-        if($res)
-        {
-            //存在同样地身份证号
+        $res = Userinfo::where('identity', $identity)->get();
+        return $this->result($res);
+    }
 
-        }else{
-            //不存在同样地身份证号
+    private function result($res)
+    {
+        if (count($res) == 0) {
+            return 0;
+        } else {
+            return 1;
         }
     }
-
 
 }
