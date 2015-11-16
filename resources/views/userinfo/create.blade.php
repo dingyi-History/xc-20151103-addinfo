@@ -12,5 +12,6 @@
     </div>
 @endsection
 @section('js')
+    <script src="{{asset('assets/vuejs/vue-form.min.js')}}"></script>
     <script src="{{asset('assets/vuejs/userinfo_form_validate.js')}}"></script>
 @endsection
