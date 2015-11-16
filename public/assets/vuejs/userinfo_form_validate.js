@@ -7,40 +7,33 @@ new Vue({
             name: '',
             phone: '',
             identity: '',
-            onephone:false,
-            oneidentity:false
+            onephone: false,
+            oneidentity: false
         }
     },
     methods: {
         onephone: function () {
-            //alert('one');
-            this.$http.get('/api/onephone/' + this.model.phone, function (data, status, request) {
-                if(data == 0)
-                {
+            this.$http.get('/api/onephone/' + this.model.phone.trim(), function (data, status, request) {
+                if (data == 0) {
                     this.model.onephone = false;
                 }
-                if(data == 1)
-                {
+                if (data == 1) {
                     console.log(data);
                     this.model.onephone = true;
                 }
             }).error(function (data, status, request) {
-
             });
         },
         oneidentity: function () {
-            this.$http.get('/api/oneidentity/' + this.model.identity, function (data, status, request) {
+            this.$http.get('/api/oneidentity/' + this.model.identity.trim(), function (data, status, request) {
 
-                if(data == 0)
-                {
-                    console.log('无重复');
+                if (data == 0) {
+                    this.model.oneidentity = false;
                 }
-                if(data == 1)
-                {
+                if (data == 1) {
                     this.model.oneidentity = true;
                 }
             }).error(function (data, status, request) {
-
             });
         },
         onSubmit: function () {
