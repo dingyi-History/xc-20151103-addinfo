@@ -6,11 +6,9 @@
 
 @section('content')
     <div class="container create-form shadow-z-1" id="app">
-        <form v-form name="myform" @submit.prevent="onSubmit" method="post" action="/userinfo/'{{$userinfo->id}}"
-              id="myform">
-            <input name="_method" type="hidden" value="PATCH">
-            @include('common.form',['form_title' => '编辑用户信息'])
-        </form>
+        {!! Form::model($userinfo,['method'=>'PATCH','url'=>'/userinfo/'.$userinfo->id,'@submit.prevent' => 'onSubmit','name' => 'myform','id' => 'myform','v-form']) !!}
+        @include('common.form',['form_title' => '编辑用户信息'])
+        {!! Form::close() !!}
     </div>
 @endsection
 @section('js')
