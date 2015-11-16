@@ -44,10 +44,12 @@ new Vue({
             if (realname == '') {
                 this.error.realname = '* 请输入姓名';
                 this.is_error.realname = true;
+                return false;
             } else {
                 this.error.realname = '';
                 this.is_error.realname = false;
                 this.is_ok.realname = true;
+                return true;
             }
         },
         emailvalidate: function () {
@@ -57,10 +59,12 @@ new Vue({
             if (!filter.test(email)) {
                 this.error.email = '* 请输入邮箱,例:example@xici.net';
                 this.is_error.email = true;
+                return false;
             } else {
                 this.error.email = '';
                 this.is_error.email = false;
                 this.is_ok.email = true;
+                return false;
             }
         },
         passwordvalidate: function () {
@@ -75,9 +79,12 @@ new Vue({
                 this.is_ok.password = true;
             }
         },
-        submit: function () {
-            this.realnamevalidate();
-            this.emailvalidate();
+        onSubmit: function () {
+            var bool1 = this.realnamevalidate();
+            var bool2 = this.emailvalidate();
+            if (bool1 == true && bool2 == true) {
+                $('myform').submit();
+            }
         }
 
     }

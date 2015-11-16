@@ -10,7 +10,7 @@
 @endsection
 @section('content')
     <div class="container create-form shadow-z-1">
-        {!! Form::open(['url'=>'/users']) !!}
+        {!! Form::open(['url'=>'/users','id' => 'myform','@submit.prevent' => "onSubmit"]) !!}
         @include('common.user_form',['form_title' => '新建员工',
         'vbinderror' => 'is_error.password',
         'vbindsuccess' => 'is_ok.password',
@@ -22,5 +22,6 @@
     </div>
 @endsection
 @section('js')
+    <script src="{{asset('assets/vuejs/vue-form.min.js')}}"></script>
     <script src="{{asset('assets/vuejs/users_form_validate.js')}}"></script>
 @endsection

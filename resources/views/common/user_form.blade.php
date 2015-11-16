@@ -63,7 +63,7 @@
             <button type="reset" class="btn btn-primary-outline btn-block">重置</button>
         </div>
         <div class="col-sm-2">
-            <button type="submit" class="btn btn-success-outline btn-block">保存</button>
+            <input type="submit" class="btn btn-success-outline btn-block" value="保存"/>
         </div>
     </div>
 </fieldset>
