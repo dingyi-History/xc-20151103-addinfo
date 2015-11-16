@@ -3,6 +3,7 @@
 namespace App\Api\Controllers;
 
 use App\Userinfo;
+use App\Api\Controllers;
 
 class ValidateController extends BaseController
 {
@@ -18,12 +19,13 @@ class ValidateController extends BaseController
         //     //不存在一样的手机号
         //
         // }
-        return '100';
-
+        $user = Userinfo::all();
+        return $this->response->array($user->toArray());
     }
 
     public function oneidentity(Request $request)
     {
+        return 'ok';
         $identity = $request->input('identity');
         $res = Userinfo::where('identity',$identity)->get();
         if($res)
