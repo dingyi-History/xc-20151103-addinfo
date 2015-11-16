@@ -4,7 +4,7 @@
     <title>@yield('title')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta id="token" name="token" value="{{ csrf_token() }}">\
+    <meta id="token" name="token" value="{{ csrf_token() }}">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" href="/assets/boot4/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/sweetalert/sweetalert.css">

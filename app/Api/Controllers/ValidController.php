@@ -4,7 +4,6 @@ namespace App\Api\Controllers;
 
 use App\Userinfo;
 use App\Api\Controllers;
-use Illuminate\Http\Request;
 
 class ValidController extends BaseController
 {
