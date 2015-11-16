@@ -6,8 +6,10 @@
 
 @section('content')
     <div class="container create-form shadow-z-1">
-        {!! Form::model($userinfo,['method'=>'PATCH','url'=>'/userinfo/'.$userinfo->id]) !!}
-        @include('common.form',['form_title' => '编辑用户信息'])
-        {!! Form::close() !!}
+        <form v-form name="myform" @submit.prevent="onSubmit" method="post" action="/userinfo/'{{$userinfo->id}}"
+              id="myform">
+            <input name="_method" type="hidden" value="PATCH">
+            @include('common.form',['form_title' => '编辑用户信息'])
+        </form>
     </div>
 @endsection

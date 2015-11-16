@@ -1,31 +1,37 @@
 {!! Form::token() !!}
 <fieldset id="userinfo_form">
     <legend class="create-form-title">{{$form_title}}</legend>
-    <div class="form-group row" v-bind:class="{ 'has-error': is_error.name,'has-success':is_ok.name }">
+    <div class="form-group row">
         {!! Form::label('name','真实姓名',['class' => 'col-md-2 control-label']) !!}
         <div class="col-md-10">
-            {!! Form::text('name',null,['class' => 'form-control','v-model' => 'userinfo.name' ,'@keyup' => "namevalidate", '@keydown' => "namevalidate"]) !!}
-            <span class="form-span-error pull-left" v-model="error.name" v-text="error.name"></span>
+            {!! Form::text('name',null,['class' => 'form-control','v-model' => 'model.name','required','v-form-ctrl']) !!}
+            <div class="errors pull-left" v-if="myform.$submitted">
+                <span class="form-span-error" v-if="myform.name.$error.required">* 请输入姓名</span>
+            </div>
             @if ($errors->has('name'))
                 <span class="form-span-error">* 请输入姓名</span>
             @endif
         </div>
     </div>
-    <div class="form-group row" v-bind:class="{ 'has-error': is_error.phone,'has-success':is_ok.phone }">
+    <div class="form-group row">
         {!! Form::label('phone','手机号',['class' => 'col-md-2 control-label']) !!}
         <div class="col-md-10">
-            {!! Form::text('phone',null,['class' => 'form-control','v-model' => 'userinfo.phone' ,'@keyup' => "phonevalidate", '@keydown' => "phonevalidate"]) !!}
-            <span class="form-span-error pull-left" v-model="error.phone" v-text="error.phone"></span>
+            {!! Form::text('phone',null,['class' => 'form-control','v-model' => 'model.phone','required','v-form-ctrl']) !!}
+            <div class="errors pull-left" v-if="myform.$submitted">
+                <span class="form-span-error" v-if="myform.phone.$error.required">* 请输入手机号</span>
+            </div>
             @if ($errors->has('phone'))
                 <span class="form-span-error">* 请正确输入手机号或手机号已存在</span>
             @endif
         </div>
     </div>
-    <div class="form-group row" v-bind:class="{ 'has-error': is_error.identity,'has-success':is_ok.identity }">
+    <div class="form-group row">
         {!! Form::label('identity','身份证号',['class' => 'col-md-2 control-label']) !!}
         <div class="col-md-10">
-            {!! Form::text('identity',null,['class' => 'form-control','v-model' => 'userinfo.identity' ,'@keyup' => "identityvalidate", '@keydown' => "identityvalidate"]) !!}
-            <span class="form-span-error pull-left" v-model="error.identity" v-text="error.identity"></span>
+            {!! Form::text('identity',null,['class' => 'form-control','v-model' => 'model.identity','required','v-form-ctrl']) !!}
+            <div class="errors pull-left" v-if="myform.$submitted">
+                <span class="form-span-error" v-if="myform.identity.$error.required">* 请输入身份证号</span>
+            </div>
             @if ($errors->has('identity'))
                 <span class="form-span-error">* 请正确输入身份证号或手机号已存在</span>
             @endif
@@ -223,7 +229,7 @@
             <button type="reset" class="btn btn-primary-outline btn-block">重置</button>
         </div>
         <div class="col-sm-2">
-            <button type="submit" class="btn btn-success-outline btn-block">保存</button>
+            <input type="submit" class="btn btn-success-outline btn-block" value="保存"/>
         </div>
     </div>
 </fieldset>

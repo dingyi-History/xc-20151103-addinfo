@@ -5,10 +5,11 @@
 @endsection
 
 @section('content')
-    <div class="container create-form shadow-z-1">
-        {!! Form::open(['url'=>'/userinfo']) !!}
-        @include('common.form',['form_title' => '添加用户信息'])
-        {!! Form::close() !!}
+    <div class="container create-form shadow-z-1" id="app">
+        <form v-form name="myform" @submit.prevent="onSubmit" method="post" action="/userinfo" id="myform"
+              role="form">
+            @include('common.form',['form_title' => '添加用户信息'])
+        </form>
     </div>
 @endsection
 @section('js')
