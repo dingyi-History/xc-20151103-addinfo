@@ -56,11 +56,10 @@ new Vue({
                 this.is_ok.identity = true;
             }
         },
-        submit: function (){
+        submit: function () {
             this.namevalidate();
             this.phonevalidate();
             this.identityvalidate();
-
         }
 
     }

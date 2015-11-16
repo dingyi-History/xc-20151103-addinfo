@@ -29,8 +29,8 @@ Route::group(['middleware' => 'auth'], function () {
 //dingo/api
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {
-    Route::group(['prefix' => 'validate', 'namespace' => 'App\Api\Controllers'], function ($api) {
-        get('onephone', 'ValidateController@onephone');
+    $api->group(['prefix' => 'validate', 'namespace' => 'App\Api\Controllers'], function ($api) {
+        $api->get('onephone', 'ValidateController@onephone');
     });
 });
 

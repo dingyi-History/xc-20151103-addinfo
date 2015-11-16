@@ -11,7 +11,7 @@
             <div id="large-header" class="large-header">
                 <canvas id="demo-canvas"></canvas>
                 <div class="main-title container shadow-z-1" id="login_form">
-                    <form class="form" method="post" action="/auth/login">
+                    <form class="form" method="post" action="/auth/login"  v-form name="myform" @submit.prevent="onSubmit">
                         {!! csrf_field() !!}
                         <legend class="create-form-title">登录</legend>
                         <div class="form-group row" v-bind:class="{ 'has-error': is_error_email,'has-success':is_ok_email }">
@@ -49,6 +49,7 @@
     <script src="{{asset('assets/loginbg/js/rAF.js')}}"></script>
     <script src="{{asset('assets/loginbg/js/demo-2.js')}}"></script>
     <script src="{{asset('assets/vuejs/login_form_validate.js')}}"></script>
+    <script src="{{asset('assets/vuejs/vue-form.min.js')}}"></script>
     <script>
         @if(count($errors) > 0 )
             swal('登录失败','用户名和密码不匹配','error');

@@ -18,7 +18,7 @@ class ValidateController extends BaseController
         //     //不存在一样的手机号
         //
         // }
-        return Userinfo::all();
+        return '100';
 
     }
 
