@@ -1,3 +1,4 @@
+# 小结  http://segmentfault.com/a/1190000004005761
 > 学习了一段时间的laravel,小结一下最近做的laravel小任务,写下来才知道好乱糟糟，还是以记录学习的资料为主，写的很糟糕，还需要再揣度多屡屡思路。
 > 20151103-16
 > * 源码地址：https://github.com/dingyiming/xc-addinfo-1103
