@@ -12,7 +12,7 @@ Route::group(['prefix' => 'auth'], function () {
     get('logout', 'Auth\AuthController@getLogout');
 });
 
-//登录用户才能访问进行用户信息操作
+//登录员工才能访问进行用户信息操作
 Route::group(['middleware' => 'auth'], function () {
     resource('userinfo', 'UserinfosController');
     post('userinfo/search', 'UserinfosController@search');
@@ -25,6 +25,12 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'auth'], function () {
     resource('users', 'UsersController');
 });
+
+//对录入的用户添加行为记录
+Route::group(['middleware' => 'auth'],function(){
+    resource('do','DolistController');
+});
+
 
 //dingo/api
 $api = app('Dingo\Api\Routing\Router');
