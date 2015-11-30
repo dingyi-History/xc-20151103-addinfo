@@ -61,12 +61,12 @@
                                 echo '员工';
                         }?></td>
                     <td>
-                        <a href="/users/{{$user->id}}/edit" class="btn btn-info-outline">编辑</a>
+                        <a href="/users/{{$user->id}}/edit" class="btn btn-info btn-sm">编辑</a>
 
                         <form action="/users/{{$user->id}}" method="post" style="display: inline-block;">
                             {!! csrf_field() !!}
                             <input name="_method" type="hidden" value="DELETE"/>
-                            <button type="submit" href="" class="btn btn-danger-outline"
+                            <button type="submit" href="" class="btn btn-danger btn-sm"
                                     onclick="return confirm('确定要删除吗?')">删除
                             </button>
                         </form>

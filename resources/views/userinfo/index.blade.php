@@ -13,13 +13,13 @@
 
 @section('header')
     @can('see-all')
-    @include('common.header', ['header_title' => '全部用户信息','header_btn' => '添加','header_btn_url' => '/userinfo/create'])
+    @include('common.header', ['header_title' => '全部用户信息','header_btn' => '添加用户','header_btn_url' => '/userinfo/create'])
     @endcan
     @can('see-dep')
-    @include('common.header', ['header_title' => '本部门录入的用户信息','header_btn' => '添加','header_btn_url' => '/userinfo/create'])
+    @include('common.header', ['header_title' => '本部门录入的用户信息','header_btn' => '添加用户','header_btn_url' => '/userinfo/create'])
     @endcan
     @can('see-me')
-    @include('common.header', ['header_title' => '我录入的信息','header_btn' => '添加','header_btn_url' => '/userinfo/create'])
+    @include('common.header', ['header_title' => '我录入的信息','header_btn' => '添加用户','header_btn_url' => '/userinfo/create'])
     @endcan
 @endsection
 
@@ -51,8 +51,8 @@
                 <th>真实姓名</th>
                 <th>性别</th>
                 <th>手机号</th>
+                <th>身份证号</th>
                 <th>当前所在地</th>
-                <th>学历</th>
                 <th>职业</th>
                 <th>录入时间</th>
                 <th>详情</th>
@@ -64,13 +64,15 @@
                     <td>{{$data->name}}</td>
                     <td>{{$data->sex}}</td>
                     <td>{{$data->phone}}</td>
+                    <td>{{$data->identity}}</td>
                     <td>{{$data->residence}}</td>
-                    <td>{{$data->degree}}</td>
                     <td>{{$data->profession}}</td>
                     <td>{{$data->created_at}}</td>
                     <td>
                         <a href="/userinfo/{{$data->id}}/" class="btn btn-info btn-raised btn-sm"
-                           style="margin: 0;">查看</a>
+                           style="margin: 0;">资料</a>
+                        <a href="/do/{{$data->id}}/" class="btn btn-info btn-raised btn-sm"
+                           style="margin: 0;">记录</a>
                     </td>
                 </tr>
             @endforeach

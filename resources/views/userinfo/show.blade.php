@@ -1,7 +1,7 @@
 @extends('common.base')
 @section('title')  查看详情 @endsection
 @section('header')
-    @include('common.header',['header_title'=> "详情",'header_btn' => '全部','header_btn_url' => '/userinfo'])
+    @include('common.header',['header_title'=> "详情",'header_btn' => '全部用户','header_btn_url' => '/userinfo'])
 @endsection
 
 @section('content')
@@ -11,12 +11,7 @@
                 <legend class="create-form-title">用户详细信息</legend>
             </div>
             <div class="pull-right">
-                @cannot('see-me')
-                <p class="show-who">由{{$userinfo->realname}}在{{$userinfo->created_at}}录入</p>
-                @endcannot
-                @can('see-me')
-                <p class="show-who">在{{$userinfo->created_at}}录入</p>
-                @endcan
+                <a href="/do/{{$userinfo->id}}" class="btn btn-success-outline" style="margin-top: 10px;">该用户的行为记录</a>
             </div>
             <tbody>
             <tr>
@@ -86,6 +81,14 @@
             </tbody>
         </table>
         <div class="row">
+            <div class="pull-left" style="margin-left: 20px;">
+                @cannot('see-me')
+                <p class="show-who">由{{$userinfo->realname}}在{{$userinfo->created_at}}录入</p>
+                @endcannot
+                @can('see-me')
+                <p class="show-who">在{{$userinfo->created_at}}录入</p>
+                @endcan
+            </div>
             <div class="form-group text-right">
                 <form action="/userinfo/{{$userinfo->id}}" method="post" style="display: inline-block;">
                     {!! csrf_field() !!}

@@ -14,7 +14,9 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu1" style="margin-top: -30px;">
                     <li class="dropdown-header"> {{Auth::user()['realname']}}</li>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/userinfo">查看用户信息</a>
+                    <a class="dropdown-item" href="/userinfo/create">添加用户</a>
+                    <a class="dropdown-item" href="/userinfo">查看用户资料</a>
+                    <a class="dropdown-item" href="/do">查看用户记录</a>
                     @can('see-all')
                     <a class="dropdown-item" href="/users">员工管理</a>
                     @endcan
