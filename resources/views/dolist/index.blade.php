@@ -28,8 +28,8 @@
         <table class="table table-bordered table-hover table-striped  shadow-z-1">
             <thead>
             <tr>
-                <th>用户名</th>
-                <th>行为记录</th>
+                <th>用户ID</th>
+                <th style="max-width: 430px;">行为记录</th>
                 <th>时间</th>
                 <th>录入人</th>
                 <th>录入时间</th>
@@ -40,7 +40,7 @@
             @foreach($datas as $data)
                 <tr>
                     <td>{{$data->info_id}}</td>
-                    <td>{{$data->docontent}}</td>
+                    <td style="max-width: 430px;">{{$data->docontent}}</td>
                     <td>{{$data->dotime}}</td>
                     <td>{{$data->addman_id}}</td>
                     <td>{{$data->created_at}}</td>
@@ -50,7 +50,8 @@
                         <form action="/do/{{$data->id}}" method="post" style="display: inline-block;">
                             {!! csrf_field() !!}
                             <input name="_method" type="hidden" value="DELETE"/>
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('确定要删除吗?')">删除</button>
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('确定要删除吗?')">删除
+                            </button>
                         </form>
                     </td>
                 </tr>
