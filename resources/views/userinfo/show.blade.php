@@ -1,7 +1,7 @@
 @extends('common.base')
 @section('title')  查看详情 @endsection
 @section('header')
-    @include('common.header',['header_title'=> "详情",'header_btn' => '全部用户','header_btn_url' => '/userinfo'])
+    @include('common.header',['header_title'=> "用户资料",'header_btn' => '全部用户','header_btn_url' => '/userinfo'])
 @endsection
 
 @section('content')

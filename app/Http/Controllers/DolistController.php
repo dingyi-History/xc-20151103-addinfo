@@ -53,15 +53,18 @@ class DolistController extends CommonController
 
     public function edit($id)
     {
-        //
+        $dolist = Dolist::find($id);
+        $userinfo = Userinfo::find($dolist['info_id']);
+        return view('dolist.edit', compact('userinfo', 'dolist'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Requests\DolistRequest $request, $id)
     {
-        //
+        $res = Dolist::find($id)->update($request->all());
+        return $this->responseResult($res, $request, '保存失败', '保存成功', '/do/' . $request->input('info_id'));
     }
 
-    public function destroy(Request$req,$id)
+    public function destroy(Request $req, $id)
     {
         $res = Dolist::find($id)->delete();
         return $this->responseResult($res, $req, '删除失败', '删除成功', 'do');

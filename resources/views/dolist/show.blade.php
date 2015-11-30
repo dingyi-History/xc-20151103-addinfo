@@ -1,7 +1,7 @@
 @extends('common.base')
 @section('title')  用户行为记录 @endsection
 @section('header')
-    @include('common.header',['header_title'=> "用户行为记录",'header_btn' => '该用户的详细资料','header_btn_url' => '/userinfo/'.$userinfo->id])
+    @include('common.header',['header_title'=> "用户记录",'header_btn' => '该用户的详细资料','header_btn_url' => '/userinfo/'.$userinfo->id])
 @endsection
 
 @section('content')
@@ -18,7 +18,7 @@
             <thead>
             <tr>
                 <th>用户ID</th>
-                <th>行为记录</th>
+                <th style="max-width: 430px;">行为记录</th>
                 <th>时间</th>
                 <th>录入人</th>
                 <th>录入时间</th>
@@ -29,12 +29,12 @@
             @foreach($dolist as $do)
                 <tr>
                     <td>{{$do->info_id}}</td>
-                    <td>{{$do->docontent}}</td>
+                    <td style="max-width: 430px;">{{$do->docontent}}</td>
                     <td>{{$do->dotime}}</td>
                     <td>{{$do->addman_id}}</td>
                     <td>{{$do->created_at}}</td>
                     <td>
-                        <a href="" class="btn btn-sm btn-info">编辑</a>
+                        <a href="/do/{{$do->id}}/edit" class="btn btn-sm btn-info">编辑</a>
                         <form action="/users/{{$do->id}}" method="post" style="display: inline-block;">
                             {!! csrf_field() !!}
                             <input name="_method" type="hidden" value="DELETE"/>

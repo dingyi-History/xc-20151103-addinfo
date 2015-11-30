@@ -27,7 +27,7 @@
     </div>
 @endif
 @if(session('status1'))
-    <div id="status"   class="alert alert-success pull-right" role="alert"
+    <div id="status" class="alert alert-success pull-right" role="alert"
          style="width:300px;position: absolute;bottom: 50px;right: 0px; text-align: center;">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
