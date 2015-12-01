@@ -42,7 +42,7 @@
                     <td>{{$data->info_id}}</td>
                     <td style="max-width: 430px;">{{$data->docontent}}</td>
                     <td>{{$data->dotime}}</td>
-                    <td>{{$data->addman_id}}</td>
+                    <td>{{$data->user['realname']}}</td>
                     <td>{{$data->created_at}}</td>
                     <td>
                         <a href="/do/{{$data->info_id}}" class="btn btn-info btn-raised btn-sm"

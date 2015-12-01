@@ -13,4 +13,14 @@ class Dolist extends Model
         'docontent',
         'dotime'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'addman_id', 'id');
+    }
+
+    public function scopeOrdered($query)
+    {
+        $query->OrderBy('dolists.id', 'desc');
+    }
 }

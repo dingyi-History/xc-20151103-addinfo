@@ -25,11 +25,18 @@ class User extends Model implements AuthenticatableContract,
     protected $fillable = ['email', 'password', 'realname', 'dep_id', 'authority'];
     protected $hidden = ['password', 'remember_token'];
 
-    //一个录入信息的人对应多个录入的信息
+    //一个员工对应多个录入的信息
     public function userinfos()
     {
         return $this->hasMany('App\Userinfo', 'addman_id', 'id');
     }
+
+    //一个员工对应多个录入的记录
+    public function addman()
+    {
+        return $this->hasMany('App\Dolist', 'addman_id', 'id');
+    }
+
 
     //一个员工属于一个部门
     public function dep()

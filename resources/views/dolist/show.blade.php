@@ -31,7 +31,7 @@
                     <td>{{$do->info_id}}</td>
                     <td style="max-width: 430px;">{{$do->docontent}}</td>
                     <td>{{$do->dotime}}</td>
-                    <td>{{$do->addman_id}}</td>
+                    <td>{{$do->user['realname']}}</td>
                     <td>{{$do->created_at}}</td>
                     <td>
                         <a href="/do/{{$do->id}}/edit" class="btn btn-sm btn-info">编辑</a>

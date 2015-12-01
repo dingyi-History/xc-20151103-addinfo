@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dolist;
 use App\Repositories\UserinfoRepositoryInterface;
 use App\User;
 use App\Userinfo;
@@ -64,7 +65,8 @@ class UserinfosController extends CommonController
     public function show(Request $req, $id)
     {
         $userinfo = $this->userinfos->selectOneUserinfo($id);
-        if ($userinfo) return view('userinfo.show', compact('userinfo'));
+        $dolist = Dolist::where('info_id', $id)->with('user')->ordered()->get();
+        if ($userinfo) return view('userinfo.show', compact('userinfo','dolist'));
         return $this->responseResult(null, $req, '查询失败', null, 'userinfo');
     }
 

@@ -20,7 +20,7 @@ class DolistController extends CommonController
 
     public function index()
     {
-        $datas = Dolist::Paginate(env('PAGE_ROWS'));
+        $datas = Dolist::with('user')->ordered()->Paginate(env('PAGE_ROWS'));
         return view('dolist.index', compact('datas'));
     }
 
@@ -46,7 +46,7 @@ class DolistController extends CommonController
 
     public function show($id)
     {
-        $dolist = Dolist::where('info_id', $id)->get();
+        $dolist = Dolist::where('info_id', $id)->with('user')->ordered()->get();
         $userinfo = Userinfo::find($id);
         return view('dolist.show', compact('dolist', 'userinfo'));
     }
