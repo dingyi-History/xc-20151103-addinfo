@@ -10,6 +10,13 @@
             <div class="pull-left">
                 <legend class="create-form-title">用户详细信息</legend>
             </div>
+            <div class="pull-right" style="margin-top: 20px;">
+                @if($userinfo->tags)
+                    @foreach($userinfo->tags as $tag)
+                        <a href=""><span class="label label-success" style="font-size: 18px;">{{$tag->name}}</span></a>
+                    @endforeach
+                @endif
+            </div>
             <tbody>
             <tr>
                 <th>真实姓名</th>

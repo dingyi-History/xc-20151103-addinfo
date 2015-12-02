@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Dolist;
 use App\Repositories\UserinfoRepositoryInterface;
+use App\Tag;
 use App\User;
 use App\Userinfo;
 use Illuminate\Http\Request;
@@ -48,7 +49,8 @@ class UserinfosController extends CommonController
     public function create()
     {
         $data = $this->selectData();
-        return view('userinfo.create', compact('data'));
+        $tags = Tag::lists('name', 'id');
+        return view('userinfo.create', compact('data', 'tags'));
     }
 
     //存储录入的信息
@@ -57,7 +59,11 @@ class UserinfosController extends CommonController
         $input = $req->all();
         $input['addman_id'] = $this->user['id'];
         $res = Userinfo::create($input);
-
+        $taglist = $req->input('tag_list');
+        foreach ($taglist as $tag) {
+            Tag::create(array($tag));
+        }
+        $res->tags()->attach($req->input('tag_list'));
         return $this->responseResult($res, $req, '存储失败', '保存成功', 'userinfo');
     }
 
@@ -66,7 +72,7 @@ class UserinfosController extends CommonController
     {
         $userinfo = $this->userinfos->selectOneUserinfo($id);
         $dolist = Dolist::where('info_id', $id)->with('user')->ordered()->get();
-        if ($userinfo) return view('userinfo.show', compact('userinfo','dolist'));
+        if ($userinfo) return view('userinfo.show', compact('userinfo', 'dolist'));
         return $this->responseResult(null, $req, '查询失败', null, 'userinfo');
     }
 
@@ -75,8 +81,8 @@ class UserinfosController extends CommonController
     {
         $userinfo = $this->userinfos->selectOneUserinfo($id);
         $data = $this->selectData();
-
-        if ($userinfo) return view('userinfo.edit', compact('userinfo', 'data'));
+        $tags = Tag::lists('name', 'id');
+        if ($userinfo) return view('userinfo.edit', compact('userinfo', 'data','tags'));
         return $this->responseResult(null, $req, '查询失败', null, 'userinfo/' . $id);
     }
 

@@ -38,6 +38,7 @@ $api->version('v1', function ($api) {
     $api->group(['namespace' => 'App\Api\Controllers'], function ($api) {
         $api->get('onephone/{params}', 'ValidController@onephone');
         $api->get('oneidentity/{params}', 'ValidController@oneidentity');
+        $api->get('taglist','TagController@taglist');
     });
 });
 

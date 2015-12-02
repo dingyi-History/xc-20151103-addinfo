@@ -43,6 +43,11 @@ class Userinfo extends Model
         return $this->belongsTo('App\User', 'addman_id', 'id');
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag','info_tag');
+    }
+
     //格式化生日时间
     public function setBirthdayAttribute($birthday)
     {
