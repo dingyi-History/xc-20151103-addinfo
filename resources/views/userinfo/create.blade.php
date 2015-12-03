@@ -21,17 +21,10 @@
     <script src="{{asset('assets/select/select2.full.min.js')}}"></script>
     <script>
         $(function () {
-            $(".taglist").select2({
-                //placeholder: "添加标签",
-                multiple: true,
-                ajax: {
-                    url: "/api/taglist",
-                    dataType: 'json',
-                    results: function (data) {
-                        return {results: data};
-                    },
-                    cache: true
-                }
+            $(".tag").select2({
+                placeholder: "添加标签",
+                tags: true,
+                multiple: true
             });
         });
     </script>

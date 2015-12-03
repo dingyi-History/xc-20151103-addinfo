@@ -13,7 +13,7 @@
             <div class="pull-right" style="margin-top: 20px;">
                 @if($userinfo->tags)
                     @foreach($userinfo->tags as $tag)
-                        <a href=""><span class="label label-success" style="font-size: 18px;">{{$tag->name}}</span></a>
+                        <a href="/tag/show/{{$tag->id}}"><span class="label label-success" style="font-size: 18px;">{{$tag->name}}</span></a>
                     @endforeach
                 @endif
             </div>

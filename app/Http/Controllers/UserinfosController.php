@@ -60,10 +60,15 @@ class UserinfosController extends CommonController
         $input['addman_id'] = $this->user['id'];
         $res = Userinfo::create($input);
         $taglist = $req->input('tag_list');
-        foreach ($taglist as $tag) {
-            Tag::create(array($tag));
+        foreach ($taglist as $key => $value) {
+            $r = Tag::find($value);
+            if ($r) {
+                continue;
+            }
+            $data = Tag::create(['name' => $value]);
+            $taglist[$key] = $data['id'];
         }
-        $res->tags()->attach($req->input('tag_list'));
+        $res->tags()->attach($taglist);
         return $this->responseResult($res, $req, '存储失败', '保存成功', 'userinfo');
     }
 
@@ -82,7 +87,7 @@ class UserinfosController extends CommonController
         $userinfo = $this->userinfos->selectOneUserinfo($id);
         $data = $this->selectData();
         $tags = Tag::lists('name', 'id');
-        if ($userinfo) return view('userinfo.edit', compact('userinfo', 'data','tags'));
+        if ($userinfo) return view('userinfo.edit', compact('userinfo', 'data', 'tags'));
         return $this->responseResult(null, $req, '查询失败', null, 'userinfo/' . $id);
     }
 

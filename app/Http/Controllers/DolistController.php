@@ -46,7 +46,7 @@ class DolistController extends CommonController
 
     public function show($id)
     {
-        $dolist = Dolist::where('info_id', $id)->with('user')->ordered()->get();
+        $dolist = Dolist::where('info_id', $id)->with('user')->ordered()->Paginate(env('PAGE_ROWS'));
         $userinfo = Userinfo::find($id);
         return view('dolist.show', compact('dolist', 'userinfo'));
     }

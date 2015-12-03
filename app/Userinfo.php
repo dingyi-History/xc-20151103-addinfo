@@ -45,7 +45,12 @@ class Userinfo extends Model
 
     public function tags()
     {
-        return $this->belongsToMany('App\Tag','info_tag');
+        return $this->belongsToMany('App\Tag', 'info_tag');
+    }
+
+    public function getTagListAttribute()
+    {
+        return $this->tags->lists('id')->all();
     }
 
     //格式化生日时间

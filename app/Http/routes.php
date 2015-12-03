@@ -31,6 +31,12 @@ Route::group(['middleware' => 'auth'],function(){
     resource('do','DolistController');
 });
 
+//标签
+Route::group(['prefix' => 'tag','middleware' => 'auth'],function(){
+    get('index','TaglistController@index');
+    get('show/{id}','TaglistController@show');
+    post('store','TaglistController@store');
+});
 
 //dingo/api
 $api = app('Dingo\Api\Routing\Router');
@@ -46,3 +52,6 @@ $api->version('v1', function ($api) {
 Route::post('oauth/access_token', function () {
     return Response::json(Authorizer::issueAccessToken());
 });
+
+Route::get('excel/export','ExcelController@export');
+Route::get('excel/import','ExcelController@import');

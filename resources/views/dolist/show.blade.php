@@ -47,5 +47,10 @@
             @endforeach
             </tbody>
         </table>
+        <div class="container">
+            <nav class="text-center">
+                {!! $dolist->render() !!}
+            </nav>
+        </div>
     </div>
 @endsection

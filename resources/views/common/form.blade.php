@@ -228,9 +228,10 @@
     <div class="form-group row">
         {!! Form::label('tag_list','选择标签',['class' => 'col-md-2 control-label text-right']) !!}
         <div class="col-md-10">
-        {!! Form::select('tag_list[]',$tags,null,['class'=>'form-control taglist']) !!}
+            {!! Form::select('tag_list[]',$tags,null,['class'=>'form-control tag']) !!}
         </div>
     </div>
+
     <div class="form-group row">
         <div class="col-md-8"></div>
         <div class="col-md-2">

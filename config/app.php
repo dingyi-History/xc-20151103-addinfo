@@ -156,8 +156,10 @@ return [
         LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
 
         //dingo/api
-        Dingo\Api\Provider\LaravelServiceProvider::class
+        Dingo\Api\Provider\LaravelServiceProvider::class,
 
+        //excel
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -210,6 +212,9 @@ return [
         'Form'      => Illuminate\Html\FormFacade::class,
 
         'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
+
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
     ],
 
 ];

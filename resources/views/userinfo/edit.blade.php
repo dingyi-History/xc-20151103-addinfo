@@ -18,11 +18,11 @@
     <script src="{{asset('assets/vuejs/userinfo_form_validate.js')}}"></script>
     <script src="{{asset('assets/select/select2.full.min.js')}}"></script>
     <script>
-        $(function() {
-            $(".taglist").select2({
+        $(function () {
+            $(".tag").select2({
                 placeholder: "添加标签",
                 tags: true,
-                tokenSeparators: [',', ' ']
+                multiple: true
             });
         });
     </script>
