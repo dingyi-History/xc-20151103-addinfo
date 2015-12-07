@@ -11,7 +11,14 @@ class TagController extends BaseController
     public function taglist()
     {
         $res = Tag::lists('name', 'id');
-        return $res;
+
+        $data = [];
+        foreach($res as $key => $value)
+        {
+            $arr = array('id' => $key,'text' => $value);
+            array_push($data,$arr);
+        }
+        return $data;
     }
 
     //存储标签

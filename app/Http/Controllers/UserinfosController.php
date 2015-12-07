@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Dolist;
+use App\Info_tag;
 use App\Repositories\UserinfoRepositoryInterface;
 use App\Tag;
 use App\User;
@@ -102,6 +103,8 @@ class UserinfosController extends CommonController
     public function destroy(Request $req, $id)
     {
         $res = $this->userinfos->selectOneUserinfo($id)->delete();
+        $data = Dolist::where('info_id', $id)->delete();
+        $end = Info_tag::where('userinfo_id', $id)->delete();
         return $this->responseResult($res, $req, '删除失败', '删除成功', 'userinfo');
     }
 

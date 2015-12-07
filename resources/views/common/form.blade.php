@@ -229,6 +229,7 @@
         {!! Form::label('tag_list','选择标签',['class' => 'col-md-2 control-label text-right']) !!}
         <div class="col-md-10">
             {!! Form::select('tag_list[]',$tags,null,['class'=>'form-control tag']) !!}
+            <select class="taglist form-control" multiple="multiple"></select>
         </div>
     </div>
 
