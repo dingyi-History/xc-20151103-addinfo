@@ -35,7 +35,7 @@
                 <span class="form-span-error" v-if="myform.identity.$error.required">* 请输入身份证号</span>
             </div>
             @if ($errors->has('identity'))
-                <span class="form-span-error">* 请正确输入身份证号或手机号已存在</span>
+                <span class="form-span-error">* 请正确输入身份证号或身份证号已存在</span>
             @endif
         </div>
     </div>
@@ -227,10 +227,14 @@
     </div>
     <div class="form-group row">
         {!! Form::label('tag_list','选择标签',['class' => 'col-md-2 control-label text-right']) !!}
-        <div class="col-md-10">
-            {!! Form::select('tag_list[]',$tags,null,['class'=>'form-control tag']) !!}
-            <select class="taglist form-control" multiple="multiple"></select>
+        <div class="col-md-6">
+            <select class="taglist form-control" name="tag_list[]"></select>
         </div>
+        <div class="col-md-3">
+            <input type="text" class=" form-control" v-model="newtag" v-text="newtag">
+        </div>
+        <input type="hidden" value="{{csrf_token()}}" v-model="csrf_token">
+        <button type="button" class="col-md-1 btn  btn-success" v-on:click="add">添加标签</button>
     </div>
 
     <div class="form-group row">
@@ -243,4 +247,5 @@
         </div>
     </div>
 </fieldset>
+
 

@@ -7,10 +7,26 @@ new Vue({
             phone: '',
             identity: '',
             onephone: false,
-            oneidentity: false
+            oneidentity: false,
+            newtag: '',
+            csrf_token:''
         }
     },
     methods: {
+        add: function () {
+            $.ajax({
+                type: "POST",
+                url: "/api/addtag",
+                data: {
+                    tagname: this.newtag,
+                    _token:this.csrf_token
+                },
+                success: function (data) {
+                    this.data.newtag = '';
+                    alert('添加成功');
+                }
+            });
+        },
         onephone: function () {
             this.$http.get('/api/onephone/' + this.model.phone.trim(), function (data, status, request) {
                 if (data == 0) {

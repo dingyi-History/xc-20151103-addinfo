@@ -3,6 +3,7 @@
 namespace App\Api\Controllers;
 
 use App\Api\Controllers;
+use App\Http\Requests\Request;
 use App\Tag;
 
 class TagController extends BaseController
@@ -22,9 +23,9 @@ class TagController extends BaseController
     }
 
     //存储标签
-    public function oneidentity($identity)
+    public function addtag()
     {
-
+        return 'ok';
     }
 
 }

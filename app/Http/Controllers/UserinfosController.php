@@ -61,14 +61,6 @@ class UserinfosController extends CommonController
         $input['addman_id'] = $this->user['id'];
         $res = Userinfo::create($input);
         $taglist = $req->input('tag_list');
-        foreach ($taglist as $key => $value) {
-            $r = Tag::find($value);
-            if ($r) {
-                continue;
-            }
-            $data = Tag::create(['name' => $value]);
-            $taglist[$key] = $data['id'];
-        }
         $res->tags()->attach($taglist);
         return $this->responseResult($res, $req, '存储失败', '保存成功', 'userinfo');
     }
