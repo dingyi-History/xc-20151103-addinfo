@@ -1,10 +1,5 @@
 <?php
 
-//默认访问
-Route::get('/', ['middleware' => 'auth', function () {
-    return redirect('userinfo');
-}]);
-
 //登录
 Route::group(['prefix' => 'auth'], function () {
     get('login', 'Auth\AuthController@getLogin');
@@ -56,3 +51,12 @@ Route::post('oauth/access_token', function () {
 
 Route::get('excel/export','ExcelController@export');
 Route::get('excel/import','ExcelController@import');
+
+
+
+//===================改版
+
+//默认访问
+Route::get('/', ['middleware' => 'auth', function () {
+    return view('index');
+}]);

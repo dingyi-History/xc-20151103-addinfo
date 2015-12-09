@@ -1,0 +1,15 @@
+.wrap{
+    padding:0 30px;
+}
+
+.index-card{
+    padding: 50px 50px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+}
+
+.index-card:hover{
+    border:1px solid #e66;
+    color: #ffffff;
+}
