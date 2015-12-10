@@ -14,7 +14,7 @@ class TaglistController extends Controller
     public function index()
     {
         $taglist = Tag::all();
-        return view('taglist.index', compact('taglist'));
+        return view('tag.index', compact('taglist'));
     }
 
     public function show(Request $request, $id)

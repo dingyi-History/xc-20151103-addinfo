@@ -14,14 +14,14 @@
                     <li @if (Request::is('/')) class="am-active" @endif>
                         <a href="/">首页</a>
                     </li>
-                    <li @if (Request::is('/userinfo')) class="am-active" @endif>
+                    <li @if (Request::is('userinfo')) class="am-active" @endif>
                         <a href="/userinfo">用户信息</a>
                     </li>
-                    <li @if (Request::is('/do')) class="am-active" @endif>
+                    <li @if (Request::is('do')) class="am-active" @endif>
                         <a href="/do">用户记录</a>
                     </li>
-                    <li @if (Request::is('/tag')) class="am-active" @endif>
-                        <a href="/do">用户标签</a>
+                    <li @if (Request::is('tag/index')) class="am-active" @endif>
+                        <a href="/tag/index">用户标签</a>
                     </li>
                 @endif
             </ul>
@@ -29,15 +29,21 @@
             <div class="am-topbar-right">
                 <div class="am-dropdown" data-am-dropdown="{boundary: '.am-topbar'}">
                     <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle"
-                            data-am-dropdown-toggle>用户名 <span class="am-icon-caret-down"></span></button>
+                            data-am-dropdown-toggle>  {{Auth::user()['realname']}} <span class="am-icon-caret-down"></span></button>
                     <ul class="am-dropdown-content">
-                        <li><a href="#">注册</a></li>
-                        <li><a href="#">随便看看</a></li>
+                        <li><a class="dropdown-item" href="/userinfo/create">添加用户</a></li>
+                        <li><a class="dropdown-item" href="/userinfo">查看用户资料</a></li>
+                        <li><a class="dropdown-item" href="/do">查看用户记录</a></li>
+                        @can('see-all')
+                        <li><a class="dropdown-item" href="/users">员工管理</a></li>
+                        @endcan
+                        @can('see-dep')
+                        <li><a class="dropdown-item" href="/users">部门管理</a></li>
+                        @endcan
+                        <li><a class="dropdown-item" href="/users/resetpwd">修改个人密码</a></li>
+                        <li><a class="dropdown-item bg-danger" href="/auth/logout">退出</a></li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="am-topbar-right">
             </div>
         </div>
     </div>

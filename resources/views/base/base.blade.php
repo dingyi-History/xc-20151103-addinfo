@@ -15,7 +15,9 @@
 {{-- 包含页头 --}}
 @include('base.header')
 {{-- 继承后插入的内容 --}}
-@yield('content')
+<div class="wrap">
+    @yield('content')
+</div>
 
 @if(session('status0'))
     <div class="am-alert am-alert-danger am-animation-slide-top-fixed" data-am-alert>
@@ -31,6 +33,8 @@
 @endif
 
 {{-- 包含页脚 --}}
+@include('base.footer')
+
 <script src="/amazeui/jquery.min.js"></script>
 <script src="/amazeui/amazeui.min.js"></script>
 <script src="/assets/sweetalert/sweetalert.min.js"></script>

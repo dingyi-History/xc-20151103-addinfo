@@ -21,7 +21,7 @@ class DolistController extends CommonController
     public function index()
     {
         $datas = Dolist::with('user')->ordered()->Paginate(env('PAGE_ROWS'));
-        return view('dolist.index', compact('datas'));
+        return view('record.index', compact('datas'));
     }
 
     public function create(Request $request)

@@ -38,7 +38,7 @@ class UsersController extends CommonController
             default :
                 return $this->responseResult(null, $request, '你没有权限', '', 'userinfo');
         }
-        return view('user.index', compact('users'));
+        return view('staff.index', compact('users'));
     }
 
     //新建员工的页面

@@ -42,7 +42,7 @@ class UserinfosController extends CommonController
                 $datas = $this->userinfos->selectMe($this->user['id']);
                 break;
         }
-        if ($datas) return view('userinfo.index', compact('datas'));
+        if ($datas) return view('info.index', compact('datas'));
         return $this->responseResult(null, $req, '查询失败', null, 'userinfo');
     }
 
@@ -70,7 +70,7 @@ class UserinfosController extends CommonController
     {
         $userinfo = $this->userinfos->selectOneUserinfo($id);
         $dolist = Dolist::where('info_id', $id)->with('user')->ordered()->get();
-        if ($userinfo) return view('userinfo.show', compact('userinfo', 'dolist'));
+        if ($userinfo) return view('info.show', compact('userinfo', 'dolist'));
         return $this->responseResult(null, $req, '查询失败', null, 'userinfo');
     }
 

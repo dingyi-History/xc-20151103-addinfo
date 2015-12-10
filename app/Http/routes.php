@@ -1,4 +1,8 @@
 <?php
+//默认访问
+Route::get('/', ['middleware' => 'auth', function () {
+    return view('index');
+}]);
 
 //登录
 Route::group(['prefix' => 'auth'], function () {
@@ -54,9 +58,4 @@ Route::get('excel/import','ExcelController@import');
 
 
 
-//===================改版
 
-//默认访问
-Route::get('/', ['middleware' => 'auth', function () {
-    return view('index');
-}]);
