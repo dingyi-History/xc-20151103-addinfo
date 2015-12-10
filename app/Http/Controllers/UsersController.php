@@ -71,7 +71,7 @@ class UsersController extends CommonController
         $user['password'] = null;
         $deps = $this->getDep();
         $authority = $this->getAuthority($request);
-        return view('user.edit', compact('user', 'deps', 'authority'));
+        return view('staff.edit', compact('user', 'deps', 'authority'));
     }
 
     //更新员工信息
@@ -108,7 +108,7 @@ class UsersController extends CommonController
     //显示密码修改
     public function showreset()
     {
-        return view('user.reset');
+        return view('staff.reset');
     }
 
     //更改密码

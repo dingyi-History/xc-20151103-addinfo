@@ -3,7 +3,7 @@
 @section('content')
     <div class="border-1 am-animation-slide-left">
         @include('base.title',['title' => '员工管理'])
-        <table class="am-table  am-table-hover am-animation-slide-left">
+        <table class="am-table  am-table-hover">
             <thead>
             <tr>
                 <th>部门</th>

@@ -22,7 +22,7 @@ class TaglistController extends Controller
         $data = Tag::find($id)->userinfos()->Paginate(env('PAGE_ROWS'));
         $tagname = Tag::find($id);
         $taglist = Tag::all();
-        return view('taglist.show', compact('data', 'tagname', 'taglist'));
+        return view('tag.show', compact('data', 'tagname', 'taglist'));
     }
 
     public function store(Request $request)

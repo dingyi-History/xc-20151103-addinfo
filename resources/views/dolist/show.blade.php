@@ -35,7 +35,7 @@
                     <td>{{$do->created_at}}</td>
                     <td>
                         <a href="/do/{{$do->id}}/edit" class="btn btn-sm btn-info">编辑</a>
-                        <form action="/users/{{$do->id}}" method="post" style="display: inline-block;">
+                        <form action="/do/{{$do->id}}" method="post" style="display: inline-block;">
                             {!! csrf_field() !!}
                             <input name="_method" type="hidden" value="DELETE"/>
                             <button type="submit" href="" class="btn btn-danger btn-sm"

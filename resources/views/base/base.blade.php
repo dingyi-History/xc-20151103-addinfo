@@ -14,23 +14,13 @@
 <body>
 {{-- 包含页头 --}}
 @include('base.header')
+@include('base.response')
 {{-- 继承后插入的内容 --}}
 <div class="wrap">
     @yield('content')
 </div>
 
-@if(session('status0'))
-    <div class="am-alert am-alert-danger am-animation-slide-top-fixed" data-am-alert>
-        <button type="button" class="am-close">&times;</button>
-        <strong>对不起!</strong> {{session('status0')}}
-    </div>
-@endif
-@if(session('status1'))
-    <div class="am-alert am-alert-success am-animation-slide-top-fixed" data-am-alert>
-        <button type="button" class="am-close">&times;</button>
-        <strong>OK!</strong> {{session('status1')}}
-    </div>
-@endif
+
 
 {{-- 包含页脚 --}}
 @include('base.footer')

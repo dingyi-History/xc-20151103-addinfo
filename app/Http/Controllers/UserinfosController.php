@@ -51,7 +51,7 @@ class UserinfosController extends CommonController
     {
         $data = $this->selectData();
         $tags = Tag::lists('name', 'id');
-        return view('userinfo.create', compact('data', 'tags'));
+        return view('info.create', compact('data', 'tags'));
     }
 
     //存储录入的信息

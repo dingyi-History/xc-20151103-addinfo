@@ -32,6 +32,9 @@ body{
 
 .border-1{
     border:1px solid #e3e3e3;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
     padding: 30px;
     margin-bottom:30px;
     background: #ffffff;
@@ -45,4 +48,8 @@ body{
     margin-bottom: 20px;
     color: #ffffff;
 
+}
+
+.form-span-error{
+    color: #e66;
 }

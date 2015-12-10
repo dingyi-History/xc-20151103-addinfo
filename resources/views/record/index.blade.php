@@ -19,7 +19,7 @@
                 <tr>
                     <td>{{$data->info_id}}</td>
                     <td style="max-width: 430px;">{{$data->docontent}}</td>
-                    <td>{{$data->dotime}}</td>
+                    <td>{{ date("Y-m-d",strtotime($data->dotime))}}</td>
                     <td>{{$data->user['realname']}}</td>
                     <td>{{$data->created_at}}</td>
                     <td>
@@ -37,6 +37,8 @@
             @endforeach
             </tbody>
         </table>
+
+        @include('base.page')
     </div>
 
 @endsection

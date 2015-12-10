@@ -91,7 +91,7 @@
     </div>
 
     <div class="container border-1 am-animation-slide-left">
-        @include('base.title',['title' => '该用户记录'])
+        @include('base.title',['title' => '该用户记录','btn' => '添加记录','btn_url' => '/do/create?id='.$userinfo->id])
         <table class="am-table  am-table-striped am-table-hover">
             <thead>
             <tr>
@@ -113,7 +113,7 @@
                     <td>{{$do->created_at}}</td>
                     <td>
                         <a href="/do/{{$do->id}}/edit" class="am-btn am-btn-primary am-btn-xs">编辑</a>
-                        <form action="/users/{{$do->id}}" method="post" style="display: inline-block;">
+                        <form action="/do/{{$do->id}}" method="post" style="display: inline-block;">
                             {!! csrf_field() !!}
                             <input name="_method" type="hidden" value="DELETE"/>
                             <button type="submit" href="" class="am-btn am-btn-danger am-btn-xs"

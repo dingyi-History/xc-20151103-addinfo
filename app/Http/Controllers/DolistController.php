@@ -29,7 +29,7 @@ class DolistController extends CommonController
         $info_id = $request->id;
         if (isset($info_id)) {
             $userinfo = Userinfo::find($info_id);
-            return view('dolist.create', compact('userinfo'));
+            return view('record.create', compact('userinfo'));
         }
         return redirect('do');
     }
@@ -53,15 +53,15 @@ class DolistController extends CommonController
 
     public function edit($id)
     {
-        $dolist = Dolist::find($id);
-        $userinfo = Userinfo::find($dolist['info_id']);
-        return view('dolist.edit', compact('userinfo', 'dolist'));
+        $datas = Dolist::find($id);
+        $userinfo = Userinfo::find($datas['info_id']);
+        return view('record.edit', compact('userinfo', 'datas'));
     }
 
     public function update(Requests\DolistRequest $request, $id)
     {
         $res = Dolist::find($id)->update($request->all());
-        return $this->responseResult($res, $request, '保存失败', '保存成功', '/do/' . $request->input('info_id'));
+        return $this->responseResult($res, $request, '保存失败', '保存成功', '/userinfo/' . $request->input('info_id'));
     }
 
     public function destroy(Request $req, $id)
