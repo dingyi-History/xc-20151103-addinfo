@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container border-1 am-animation-slide-left">
+        @include('base.title',['title' => '添加用户资料'])
         <form action="/userinfo" class="am-form am-form-horizontal" method="post">
             {!! Form::token() !!}
             <div class="am-form-group am-g">
@@ -63,7 +64,7 @@
             </div>
 
             <div class="am-form-group am-g">
-                {!! Form::label('orietation','情感状况',['class' => 'am-u-sm-2 am-form-label']) !!}
+                {!! Form::label('orietation','性取向',['class' => 'am-u-sm-2 am-form-label']) !!}
                 <div class="am-u-sm-8 am-u-end">
                     {!! Form::select('orietation',$data['orietation'],null,['class'=>'form-control'] ) !!}
                     @if ($errors->has('orietation'))
@@ -73,7 +74,7 @@
             </div>
 
             <div class="am-form-group am-g">
-                {!! Form::label('income_level','情感状况',['class' => 'am-u-sm-2 am-form-label']) !!}
+                {!! Form::label('income_level','收入等级',['class' => 'am-u-sm-2 am-form-label']) !!}
                 <div class="am-u-sm-8 am-u-end">
                     {!! Form::select('income_level',$data['income'],null,['class'=>'form-control'] ) !!}
                     @if ($errors->has('income_level'))
@@ -97,9 +98,6 @@
                 <div class="am-u-sm-8 am-u-end">
                     <input name="birthday" type="text" class="am-form-field" placeholder="添加时间"
                            data-am-datepicker="{theme: 'primary'}" readonly/>
-                    @if ($errors->has('birthday'))
-                        <span class="form-span-error">* 请正确输入生日,格式:1990-10-1</span>
-                    @endif
                 </div>
             </div>
 
@@ -164,7 +162,7 @@
             </div>
 
             <div class="am-form-group am-g">
-                {!! Form::label('qq','职业',['class' => 'am-u-sm-2 am-form-label']) !!}
+                {!! Form::label('qq','QQ',['class' => 'am-u-sm-2 am-form-label']) !!}
                 <div class="am-u-sm-8 am-u-end">
                     {!! Form::text('qq',null,['class' => 'form-control']) !!}
                     @if ($errors->has('qq'))
@@ -174,7 +172,7 @@
             </div>
 
             <div class="am-form-group am-g">
-                {!! Form::label('weibo','职业',['class' => 'am-u-sm-2 am-form-label']) !!}
+                {!! Form::label('weibo','微博',['class' => 'am-u-sm-2 am-form-label']) !!}
                 <div class="am-u-sm-8 am-u-end">
                     {!! Form::text('weibo',null,['class' => 'form-control']) !!}
                     @if ($errors->has('weibo'))
@@ -184,7 +182,7 @@
             </div>
 
             <div class="am-form-group am-g">
-                {!! Form::label('weixin','微信号',['class' => 'am-u-sm-2 am-form-label']) !!}
+                {!! Form::label('weixin','微信',['class' => 'am-u-sm-2 am-form-label']) !!}
                 <div class="am-u-sm-8 am-u-end">
                     {!! Form::text('weixin',null,['class' => 'form-control']) !!}
                     @if ($errors->has('weixin'))

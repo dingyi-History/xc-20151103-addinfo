@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="border-1 am-animation-slide-left">
-        @include('base.title',['title' => '员工管理'])
+        @include('base.title',['title' => '员工管理','btn' => '添加员工','btn_url' => '/users/create'])
         <table class="am-table  am-table-hover">
             <thead>
             <tr>

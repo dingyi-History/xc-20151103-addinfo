@@ -48,7 +48,7 @@ class UsersController extends CommonController
 
         $deps = $this->getDep();
         $authority = $this->getAuthority($request);
-        return view('user.create', compact('deps', 'authority'));
+        return view('staff.create', compact('deps', 'authority'));
     }
 
     //存储新建操作

@@ -80,7 +80,7 @@ class UserinfosController extends CommonController
         $userinfo = $this->userinfos->selectOneUserinfo($id);
         $data = $this->selectData();
         $tags = Tag::lists('name', 'id');
-        if ($userinfo) return view('userinfo.edit', compact('userinfo', 'data', 'tags'));
+        if ($userinfo) return view('info.edit', compact('userinfo', 'data', 'tags'));
         return $this->responseResult(null, $req, '查询失败', null, 'userinfo/' . $id);
     }
 
