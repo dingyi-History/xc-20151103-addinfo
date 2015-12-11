@@ -27,7 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 //对录入的用户添加行为记录
 Route::group(['middleware' => 'auth'],function(){
-    resource('do','DolistController');
+    resource('do','DolistController', ['except' => 'show']);
 });
 
 //标签

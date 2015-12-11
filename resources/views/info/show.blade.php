@@ -1,7 +1,7 @@
 @extends('base.base')
 @section('content')
     <div class="container border-1 am-animation-slide-left">
-        @include('base.title',['title' => '用户资料'])
+        @include('base.title',['title' => '用户资料','tags' => $userinfo->tags])
         <table class="am-table  am-table-hover">
             <tbody>
             <tr>

@@ -17,12 +17,12 @@ class TaglistController extends Controller
         return view('tag.index', compact('taglist'));
     }
 
-    public function show(Request $request, $id)
+    public function show($id)
     {
-        $data = Tag::find($id)->userinfos()->Paginate(env('PAGE_ROWS'));
+        $datas = Tag::find($id)->userinfos()->Paginate(env('PAGE_ROWS'));
         $tagname = Tag::find($id);
         $taglist = Tag::all();
-        return view('tag.show', compact('data', 'tagname', 'taglist'));
+        return view('tag.show', compact('datas', 'tagname', 'taglist'));
     }
 
     public function store(Request $request)

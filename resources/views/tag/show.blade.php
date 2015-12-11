@@ -1,17 +1,18 @@
 @extends('base.base')
 @section('content')
-    <div class="border-1 am-animation-slide-left">
-        @include('base.title',['title' => '全部标签'])
-        <div class="am-g am-table-hover">
+    <div class="am-g">
+        <div class="border-1 am-animation-slide-left am-u-md-2">
+            @include('base.title',['title' => '全部标签','btn' => '查看','btn_url' => '/tag/index'])
             @foreach($taglist as $tag)
                 <a href="/tag/show/{{$tag->id}}"><span class="am-badge am-badge-success am-round am-text-lg"
                                                        style="font-size: 18px;margin-bottom: 15px;">{{$tag->name}}</span></a>
             @endforeach
         </div>
-    </div>
 
-    <div class="border-1 am-animation-slide-left">
-        @include('base.title',['title' => '标签'])
+
+
+    <div class="border-1 am-animation-slide-left am-u-md-10">
+        @include('base.title',['title' => '标签:'.$tagname->name])
         <table class="am-table am-table-hover">
             <thead>
             <tr>
@@ -23,7 +24,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($data as $item)
+            @foreach($datas as $item)
                 <tr>
                     <td>{{$item->id}}</td>
                     <td>{{$item->name}}</td>
@@ -36,5 +37,6 @@
             @endforeach
             </tbody>
         </table>
+    </div>
     </div>
 @endsection
