@@ -53,3 +53,22 @@ body{
 .form-span-error{
     color: #e66;
 }
+
+.login{
+    background: url(../img/bg.jpg);
+    background-size: cover;
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right: 0;
+}
+
+.login .form{
+    padding: 30px;
+    background: rgba(255,255,255,0.9);
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    margin-top: 200px;
+}

@@ -1,5 +1,4 @@
 @extends('base.base')
-
 @section('content')
     <div class="container border-1 am-animation-slide-left">
         @include('base.title',['title' => '添加记录'])
