@@ -203,3 +203,12 @@
     </div>
 
 @endsection
+
+@section('js')
+    <script>
+        
+        $(".tag").select2({
+            tags: true
+        })
+    </script>
+@endsection

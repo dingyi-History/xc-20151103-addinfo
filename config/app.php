@@ -158,8 +158,6 @@ return [
         //dingo/api
         Dingo\Api\Provider\LaravelServiceProvider::class,
 
-        //excel
-        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -213,7 +211,6 @@ return [
 
         'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
 
-        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 
