@@ -90,7 +90,8 @@
         </div>
         <div class="am-g">
             @foreach($userinfo->tags as $tag)
-                <a href="/tag/show/{{$tag->id}}"><span class="am-badge am-badge-success am-round" style="font-size: 18px;margin-right: 10px;">{{$tag->name}}</span></a>
+                <a href="/tag/show/{{$tag->id}}"><span class="am-badge am-badge-success am-round"
+                                                       style="font-size: 18px;margin-right: 10px;">{{$tag->name}}</span></a>
             @endforeach
         </div>
     </div>
@@ -118,11 +119,10 @@
                     <td>{{$do->created_at}}</td>
                     <td>
                         <a href="/do/{{$do->id}}/edit" class="am-btn am-btn-primary am-btn-xs">编辑</a>
-                        <form action="/do/{{$do->id}}" method="post" style="display: inline-block;">
+                        <form action="/do/{{$do->id}}" method="post" style="display: inline-block;" id="del">
                             {!! csrf_field() !!}
                             <input name="_method" type="hidden" value="DELETE"/>
-                            <button type="submit" href="" class="am-btn am-btn-danger am-btn-xs"
-                                    onclick="return confirm('确定要删除吗?')">删除
+                            <button type="submit" id="del" href="" class="am-btn am-btn-danger am-btn-xs" onclick="return confirm('确定删除吗?');">删除
                             </button>
                         </form>
                     </td>

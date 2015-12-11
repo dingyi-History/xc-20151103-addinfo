@@ -1,4 +1,4 @@
-@if($datas->currentPage() != $datas->lastPage())
+@if($datas->lastPage() > 1)
 <ul class="am-pagination am-text-center">
     @if($datas->currentPage()>1)
         <li><a href="?page={{$datas->currentPage()-1}}">&laquo; 上一页</a></li>

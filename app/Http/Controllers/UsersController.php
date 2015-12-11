@@ -45,7 +45,6 @@ class UsersController extends CommonController
     public function create(Request $request)
     {
         $this->iscan($request);
-
         $deps = $this->getDep();
         $authority = $this->getAuthority($request);
         return view('staff.create', compact('deps', 'authority'));

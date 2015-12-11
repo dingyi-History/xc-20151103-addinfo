@@ -40,7 +40,7 @@ class DolistController extends CommonController
         $data['addman_id'] = $this->user['id'];
         $res = Dolist::create($data);
         if ($res) {
-            return $this->responseResult($res, $request, '添加失败', '添加成功', 'do');
+            return $this->responseResult($res, $request, '添加失败', '添加成功', '/userinfo/' . $request->input('info_id'));
         }
     }
 

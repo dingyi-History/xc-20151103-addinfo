@@ -25,6 +25,16 @@
                     <li @if (Request::is('tag/index')) class="am-active" @endif>
                         <a href="/tag/index">用户标签</a>
                     </li>
+                    @can('see-all')
+                    <li @if (Request::is('users')) class="am-active" @endif>
+                        <a href="/users">员工管理</a>
+                    </li>
+                    @endcan
+                    @can('see-dep')
+                    <li @if (Request::is('users')) class="am-active" @endif>
+                        <a href="/users">部门管理</a>
+                    </li>
+                    @endcan
                 @endif
             </ul>
 

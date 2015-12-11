@@ -56,7 +56,7 @@
             <div class="form-group">
                 <label class="am-u-md-3 am-form-label">密码</label>
                 <div class="am-u-md-5 am-u-end">
-                    {!! Form::password('password',['class' => 'form-control','placeholder' => '输入密码则更新,否则保持原样'])!!}
+                    {!! Form::password('password',[])!!}
                     @if ($errors->has('password'))
                         <span class="form-span-error">* 请正确输入密码</span>
                     @endif
