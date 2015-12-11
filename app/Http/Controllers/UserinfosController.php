@@ -87,7 +87,13 @@ class UserinfosController extends CommonController
     //更新信息
     public function update(Requests\UserinfoRequest $req, $id)
     {
-        $res = $this->userinfos->selectOneUserinfo($id)->update($req->all());
+        $input = $req->all();
+        $input['addman_id'] = $this->user['id'];
+        $res = $this->userinfos->selectOneUserinfo($id);
+        $res->update($input);
+        Info_tag::where('userinfo_id', $id)->delete();
+        $taglist = $req->input('tag_list');
+        $res->tags()->attach($taglist);
         return $this->responseResult($res, $req, '保存失败', '保存成功', 'userinfo/' . $id);
     }
 

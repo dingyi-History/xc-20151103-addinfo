@@ -1,10 +1,12 @@
 @extends('base.base')
-
+@section('css')
+    <link rel="stylesheet" href="/assets/select/select2.min.css">
+@endsection
 @section('content')
     <div class="container border-1 am-animation-slide-left">
         @include('base.title',['title' => '编辑用户资料','tags' => null])
-            {!! Form::model($userinfo,['method'=>'PATCH','url'=>'/userinfo/'.$userinfo->id,'class' => 'am-form am-form-horizontal']) !!}
-            {!! Form::token() !!}
+        {!! Form::model($userinfo,['method'=>'PATCH','url'=>'/userinfo/'.$userinfo->id,'class' => 'am-form am-form-horizontal']) !!}
+        <input type="hidden" value="{{csrf_token()}}" name="_token" id="token">
         <div class="am-g">
             <div class="am-u-md-6">
                 <div class="am-form-group am-g">
@@ -48,7 +50,7 @@
                 <div class="am-form-group am-g">
                     {!! Form::label('sex','性别',['class' => 'am-u-md-3 am-form-label']) !!}
                     <div class="am-u-sm-8 am-u-end">
-                        {!! Form::select('sex',$data['sex'],['class' => 'form-control']) !!}
+                        {!! Form::select('sex',$data['sex'],null,['class'=>'form-control'] ) !!}
                     </div>
                 </div>
 
@@ -60,9 +62,9 @@
                 </div>
 
                 <div class="am-form-group am-g">
-                    {!! Form::label('orietation','性取向',['class' => 'am-u-md-3 am-form-label']) !!}
+                    {!! Form::label('sex_orietation','性取向',['class' => 'am-u-md-3 am-form-label']) !!}
                     <div class="am-u-sm-8 am-u-end">
-                        {!! Form::select('orietation',$data['orietation'],null,['class'=>'form-control'] ) !!}
+                        {!! Form::select('sex_orietation',$data['orietation'],null,['class'=>'form-control'] ) !!}
                     </div>
                 </div>
 
@@ -84,7 +86,8 @@
                     {!! Form::label('birthday','生日',['class' => 'am-u-md-3 am-form-label']) !!}
                     <div class="am-u-sm-8 am-u-end">
                         <input name="birthday" type="text" class="am-form-field" placeholder="添加时间"
-                               data-am-datepicker="{theme: 'primary'}" readonly/>
+                               value="{{$userinfo->birthday}}"
+                               data-am-datepicker="{theme: 'primary'}"/>
                     </div>
                 </div>
 
@@ -190,17 +193,45 @@
                 <div class="am-form-group am-g">
                     {!! Form::label('address','添加标签',['class' => 'am-u-md-3 am-form-label']) !!}
                     <div class="am-u-sm-8 am-u-end">
-                        {!! Form::text('address',null,['class' => 'form-control']) !!}
+                        {!! Form::select ('tag_list[]',$tags,null,['class'=>'tag','multiple'=>'multiple']) !!}
+                    </div>
+                </div>
+
+                <div class="am-form-group am-g">
+                    {!! Form::label('address','新建标签',['class' => 'am-u-md-3 am-form-label']) !!}
+                    <div class="am-u-sm-7">
+                        <input type="text" id="addtag">
+                    </div>
+                    <div class="am-u-md-1  am-u-end">
+                        <input type="button" class="am-btn am-btn-success am-fr" value="新建" id="tagbtn"/>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="am-form-group am-g">
-            <input type="submit" class="am-btn am-btn-success am-fr" value="保存"/>
-            <button type="reset" class="am-btn am-btn-default am-fr">重置</button>
+        <hr>
+        <div class="am-form-group am-g am-text-center">
+            <button type="reset" class="am-btn am-btn-default">重置</button>
+            <input type="submit" class="am-btn am-btn-success" value="保存"/>
         </div>
         {!! Form::close() !!}
-
     </div>
 
+    @if (count($errors) > 0)
+            <!-- Form Error List -->
+    <div class="alert alert-danger">
+        <strong>Whoops! Something went wrong!</strong>
+
+        <br><br>
+
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+@endsection
+@section('js')
+    @include('base.tag')
 @endsection

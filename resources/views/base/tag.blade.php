@@ -14,14 +14,14 @@
         });
     });
 
-    function addtag() {
-        var oTag = $('.addtag');
+    $('#tagbtn').click(function () {
+        var oTag = $('#addtag');
         var tag = oTag.val().trim();
-        var token = $('.token').val().trim();
+
         if (tag.length > 0) {
             $.post("/api/addtag",
                     {
-                        _token: token,
+                        _token:  $('meta[name="_token"]').attr('content'),
                         tagname: tag
                     },
                     function (data, status) {
@@ -35,7 +35,7 @@
                         }
                     });
         } else {
-            alert("请填入标签名")
+            swal("Sorry!", "请输入标签名!", "error");
         }
-    }
+    });
 </script>
