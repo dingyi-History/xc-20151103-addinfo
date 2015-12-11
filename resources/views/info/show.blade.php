@@ -1,7 +1,7 @@
 @extends('base.base')
 @section('content')
     <div class="container border-1 am-animation-slide-left">
-        @include('base.title',['title' => '用户资料','tags' => $userinfo->tags])
+        @include('base.title',['title' => '用户资料'])
         <table class="am-table  am-table-hover">
             <tbody>
             <tr>
@@ -87,6 +87,11 @@
                 </form>
                 <a href="/userinfo/{{$userinfo->id}}/edit" class="am-btn am-btn-success">编辑</a>
             </div>
+        </div>
+        <div class="am-g">
+            @foreach($userinfo->tags as $tag)
+                <a href="/tag/show/{{$tag->id}}"><span class="am-badge am-badge-success am-round" style="font-size: 18px;margin-right: 10px;">{{$tag->name}}</span></a>
+            @endforeach
         </div>
     </div>
 

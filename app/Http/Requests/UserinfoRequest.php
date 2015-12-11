@@ -34,7 +34,7 @@ class UserinfoRequest extends Request
             'sex_orietation' => 'required | in:未知,男性,女性,双性',
             'income_level' => 'required | in:未知,穷人,低收入,中等收入,高收入,富人',
             'blood_type' => 'required | in:未知,A,B,AB,O',
-            'birthday' => 'required',
+            'birthday' => '',
             'residence' => 'string',
             'hometown' => 'string',
             'degree' => 'string',

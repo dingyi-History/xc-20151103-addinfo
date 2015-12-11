@@ -20,8 +20,6 @@
     @yield('content')
 </div>
 
-
-
 {{-- 包含页脚 --}}
 @include('base.footer')
 

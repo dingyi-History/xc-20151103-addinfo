@@ -4,9 +4,9 @@
 @endsection
 @section('content')
     <div class="container border-1 am-animation-slide-left">
-        @include('base.title',['title' => '添加用户资料','tags' => null])
+        @include('base.title',['title' => '添加用户资料'])
         <form action="/userinfo" class="am-form am-form-horizontal" method="post">
-            {!! Form::token() !!}
+            <input type="hidden" value="{{csrf_token()}}" name="_token" class="token">
             <div class="am-g">
                 <div class="am-u-md-6">
                     <div class="am-form-group am-g">
@@ -62,9 +62,9 @@
                     </div>
 
                     <div class="am-form-group am-g">
-                        {!! Form::label('orietation','性取向',['class' => 'am-u-md-3 am-form-label']) !!}
+                        {!! Form::label('sex_orietation','性取向',['class' => 'am-u-md-3 am-form-label']) !!}
                         <div class="am-u-sm-8 am-u-end">
-                            {!! Form::select('orietation',$data['orietation'],null,['class'=>'form-control'] ) !!}
+                            {!! Form::select('sex_orietation',$data['orietation'],null,['class'=>'form-control'] ) !!}
                         </div>
                     </div>
 
@@ -185,24 +185,51 @@
                     <div class="am-form-group am-g">
                         {!! Form::label('remark','备注',['class' => 'am-u-md-3 am-form-label']) !!}
                         <div class="am-u-sm-8 am-u-end">
-                            {!! Form::textarea('remark',null,['class' => ' form-control','rows' => '3','placeholder' => '无']) !!}
+                            {!! Form::textarea('remark',null,['rows' => '3','placeholder' => '无']) !!}
                         </div>
                     </div>
 
                     <div class="am-form-group am-g">
                         {!! Form::label('address','添加标签',['class' => 'am-u-md-3 am-form-label']) !!}
                         <div class="am-u-sm-8 am-u-end">
-                            {!! Form::select('tag_list[]',$tags,null,['class'=>'form-control tag','multiple'=>'multiple']) !!}                        </div>
+                            {!! Form::select ('tag_list[]',$tags,null,['class'=>'tag','multiple'=>'multiple']) !!}
+                        </div>
+                    </div>
+
+                    <div class="am-form-group am-g">
+                        {!! Form::label('address','新建标签',['class' => 'am-u-md-3 am-form-label']) !!}
+                        <div class="am-u-sm-7">
+                            <input type="text" class="addtag">
+                        </div>
+                        <div class="am-u-md-1  am-u-end">
+                            <input type="button" class="am-btn am-btn-success am-fr" onclick="addtag()" value="新建"/>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="am-form-group am-g">
-                    <input type="submit" class="am-btn am-btn-success am-fr" value="保存"/>
-                    <button type="reset" class="am-btn am-btn-default am-fr">重置</button>
+            <hr>
+            <div class="am-form-group am-g am-text-center">
+                <button type="reset" class="am-btn am-btn-default">重置</button>
+                <input type="submit" class="am-btn am-btn-success" value="保存"/>
             </div>
         </form>
 
     </div>
+
+    @if (count($errors) > 0)
+            <!-- Form Error List -->
+    <div class="alert alert-danger">
+        <strong>Whoops! Something went wrong!</strong>
+
+        <br><br>
+
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 
 @endsection
 
