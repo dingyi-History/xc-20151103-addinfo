@@ -28,6 +28,9 @@ class UsersController extends CommonController
     //显示员工管理页面
     public function index(Request $request)
     {
+        $this->iscan($request);
+        $deps = $this->getDep();
+        $authority = $this->getAuthority($request);
         switch ($request) {
             case $request->user()->can('see-all'):
                 $users = $this->users->getAllUser();
@@ -38,15 +41,13 @@ class UsersController extends CommonController
             default :
                 return $this->responseResult(null, $request, '你没有权限', '', 'userinfo');
         }
-        return view('staff.index', compact('users'));
+        return view('staff.index', compact('users','deps','authority'));
     }
 
     //新建员工的页面
     public function create(Request $request)
     {
-        $this->iscan($request);
-        $deps = $this->getDep();
-        $authority = $this->getAuthority($request);
+
         return view('staff.create', compact('deps', 'authority'));
     }
 

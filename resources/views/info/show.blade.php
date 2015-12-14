@@ -95,9 +95,78 @@
             @endforeach
         </div>
     </div>
+    <div id="do-not-say-1" class="am-panel-collapse am-collapse">
+        <div class="am-panel-bd">
+            <div class="container border-1 am-animation-slide-left">
+                <div class="title am-primary ">
+                    <h2 class="am-fl">添加记录</h2>
+                    <a class="am-btn am-btn-danger am-fr am-btn-sm" style="margin: 10px 20px;"
+                       data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">关闭</a>
+                </div>
+                <form class="am-form am-form-horizontal" action="/do" method="post">
+                    {!! csrf_field() !!}
+                    <fieldset>
+                        <div class="am-form-group">
+                            <label class="am-u-md-3 am-form-label">用户名</label>
+                            <div class="am-u-md-5 am-u-end">
+                                <p style="line-height: 40px;">{{$userinfo->name}}</p>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-u-md-3 am-form-label">用户ID</label>
+                            <div class="am-u-md-5 am-u-end">
+                                <p style="line-height: 40px;">{{$userinfo->id}}</p>
+                                {!! Form::hidden('info_id',$userinfo->id,['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-u-md-3 am-form-label">时间</label>
+                            <div class="am-u-md-5 am-u-end">
+                                <p>
+                                    <input name="dotime" type="text" class="am-form-field" placeholder="添加时间"
+                                           data-am-datepicker="{theme: 'primary'}" readonly/>
+                                </p>
+                                @if ($errors->has('dotime'))
+                                    <span class="form-span-error">* 请选择时间</span>
+                                @endif
+                            </div>
+                        </div>
+
+
+                        <div class="form-group am-g">
+                            <label class="am-u-md-3 am-form-label">记录内容</label>
+                            <div class="am-u-md-5 am-u-end">
+                                <textarea class="" rows="3" id="doc-ta-1" name="docontent"></textarea>
+                                @if ($errors->has('docontent'))
+                                    <span class="form-span-error">* 请输入内容</span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="am-form-group am-g">
+                            <div class="am-u-md-8">
+                                <button type="submit" class="am-btn am-btn-success am-fr">保存</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 
     <div class="container border-1 am-animation-slide-left">
-        @include('base.title',['title' => '该用户记录','btn' => '添加记录','btn_url' => '/do/create?id='.$userinfo->id])
+        <div class="title am-primary ">
+            <h2 class="am-fl">该用户记录</h2>
+            <a class="am-btn am-btn-default am-fr am-btn-sm" style="margin: 10px 20px;"
+               data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">添加记录</a>
+        </div>
+
+
         <table class="am-table  am-table-striped am-table-hover">
             <thead>
             <tr>
@@ -114,7 +183,7 @@
                 <tr>
                     <td>{{$do->info_id}}</td>
                     <td style="max-width: 430px;">{{$do->docontent}}</td>
-                    <td>{{$do->dotime}}</td>
+                    <td>{{date('Y-m-d',strtotime($do->dotime))}}</td>
                     <td>{{$do->user['realname']}}</td>
                     <td>{{$do->created_at}}</td>
                     <td>
@@ -122,7 +191,8 @@
                         <form action="/do/{{$do->id}}" method="post" style="display: inline-block;" id="del">
                             {!! csrf_field() !!}
                             <input name="_method" type="hidden" value="DELETE"/>
-                            <button type="submit" id="del" href="" class="am-btn am-btn-danger am-btn-xs" onclick="return confirm('确定删除吗?');">删除
+                            <button type="submit" id="del" href="" class="am-btn am-btn-danger am-btn-xs"
+                                    onclick="return confirm('确定删除吗?');">删除
                             </button>
                         </form>
                     </td>

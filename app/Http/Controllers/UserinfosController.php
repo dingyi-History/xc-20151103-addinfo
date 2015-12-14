@@ -126,7 +126,7 @@ class UserinfosController extends CommonController
             default:
                 return $this->responseResult(null, $req, '请填写查询条件', '', 'userinfo');
         }
-        if ($datas->total() > 0) return view('userinfo.index', compact('datas'));
+        if ($datas->total() > 0) return view('info.index', compact('datas'));
         return $this->responseResult(null, $req, '查询不到你要的内容', '', 'userinfo');
     }
 

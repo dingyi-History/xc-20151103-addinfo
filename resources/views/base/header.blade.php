@@ -17,7 +17,7 @@
                         <a href="/">首页</a>
                     </li>
                     <li @if (Request::is('userinfo')) class="am-active" @endif>
-                        <a href="/userinfo">用户信息</a>
+                        <a href="/userinfo">用户资料</a>
                     </li>
                     <li @if (Request::is('do')) class="am-active" @endif>
                         <a href="/do">用户记录</a>
