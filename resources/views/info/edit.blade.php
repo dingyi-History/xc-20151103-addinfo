@@ -202,7 +202,9 @@
                     <div class="am-u-sm-7">
                         <input type="text" id="addtag">
                     </div>
-                   \
+                    <div class="am-u-md-1  am-u-end">
+                        <input type="button" class="am-btn am-btn-success am-fr" value="新建" id="tagbtn"/>
+                    </div>
                 </div>
             </div>
         </div>

@@ -27,8 +27,8 @@ class TagController extends BaseController
     {
         $tagname = Input::get('tagname');
         if (isset($tagname)) {
-            $has = Tag::where('name',$tagname)->get();
-            if($has->count() > 0){
+            $has = Tag::where('name', $tagname)->get();
+            if ($has->count() > 0) {
                 return 0;
             }
             $tag = new Tag();

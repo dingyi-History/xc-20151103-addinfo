@@ -33,4 +33,5 @@ class TaglistController extends Controller
         }
         return redirect('/tag/index');
     }
+
 }
