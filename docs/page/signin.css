@@ -1,0 +1,15 @@
+.form-base{
+    margin-top: 80px;
+    margin-bottom: 30px;
+    max-width: 600px;
+    padding:0 50px 50px 50px;
+}
+.form-title{
+    height: 40px;
+    width: 140px;
+    background: #00b388;
+    color: #FFFFFF;
+    font-size: 20px;
+    padding:5px 50px;
+    margin-bottom: 30px;
+}

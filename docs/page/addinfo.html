@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>录入信息</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material.min.css">
+    <link rel="stylesheet" href="addinfo.css">
+</head>
+<body>
+<div class="userinfo-title">
+    <div class="container">
+        <div class="col-md-10">
+            <h1>信息录入</h1>
+        </div>
+        <div class="col-md-1">
+            <a href="" class="btn btn-info btn-raised">查看</a>
+        </div>
+        <div class="col-md-1">
+            <a href="" class="btn btn-danger btn-raised">退出</a>
+        </div>
+    </div>
+</div>
+<div class="container form-base shadow-z-1">
+    <form class="form" method="post" action="">
+        <fieldset>
+            <legend class="form-title">添加用户信息</legend>
+            <div class="form-group row has-error">
+                <label for="name" class="col-md-2 control-label">真实姓名</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="name" placeholder="真实姓名" name="name">
+                    <span style="font-size: 10px;color: red;">请正确输入</span>
+                </div>
+            </div>
+            <div class="form-group row has-success">
+                <label for="phone" class="col-md-2 control-label">手机号</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="phone" placeholder="手机号" name="phone">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="email" class="col-md-2 control-label">邮箱</label>
+                <div class="col-md-10">
+                    <input type="email" class="form-control" id="email" placeholder="邮箱" name="email">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="identity" class="col-md-2 control-label">身份证号</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="identity" placeholder="身份证号" name="identity">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="identity" class="col-md-2 control-label">性别</label>
+                <div class="col-md-10">
+                    <div class="radio radio-primary">
+                        <label>
+                            <input type="radio" name="sex" id="optionsRadios1" value="0" checked="">
+                            <span class="circle"></span><span class="check"></span>男
+                        </label>
+                        <label>
+                            <input type="radio" name="sex" id="optionsRadios2" value="1">
+                            <span class="circle"></span><span class="check"></span>女
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="status" class="col-md-2 control-label">情感状态</label>
+                <div class="col-md-10">
+                        <select class="form-control" id="status" name="relationship_status">
+                            <option>未知</option>
+                            <option>单身</option>
+                            <option>恋爱</option>
+                            <option>订婚</option>
+                            <option>已婚</option>
+                            <option>离异</option>
+                            <option>丧偶</option>
+                        </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="orietation" class="col-md-2 control-label">性取向</label>
+                <div class="col-md-10">
+                    <select class="form-control" id="orietation" name="sex_orietation">
+                        <option>未知</option>
+                        <option>男性</option>
+                        <option>女性</option>
+                        <option>双性</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+            <label for="income" class="col-md-2 control-label">收入等级</label>
+            <div class="col-md-10">
+                <select class="form-control" id="income" name="income_level">
+                    <option>未知</option>
+                    <option>穷人</option>
+                    <option>低收入</option>
+                    <option>中等收入</option>
+                    <option>高收入</option>
+                    <option>富人</option>
+                </select>
+            </div>
+            </div>
+            <div class="form-group row">
+                <label for="blood" class="col-md-2 control-label">血型</label>
+                <div class="col-md-10">
+                    <select class="form-control" id="blood" name="blood_type">
+                        <option>未知</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>AB</option>
+                        <option>O</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="birthday" class="col-md-2 control-label">生日</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="birthday" placeholder="生日" name="birthday">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="residence" class="col-md-2 control-label">当前所在地</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="residence" placeholder="当前所在地" name="residence">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="hometown" class="col-md-2 control-label">家乡</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="hometown" placeholder="家乡" name="hometown">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="degree" class="col-md-2 control-label">学历</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="degree" placeholder="学历" name="degree">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="school" class="col-md-2 control-label">毕业学校</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="school" placeholder="毕业学校" name="school">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="major" class="col-md-2 control-label">专业</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="major" placeholder="专业" name="major">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="profession" class="col-md-2 control-label">职业</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="profession" placeholder="职业" name="profession">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="qq" class="col-md-2 control-label">qq号</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="qq" placeholder="qq号" name="qq">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="weibo" class="col-md-2 control-label">微博号</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="weibo" placeholder="微博号" name="weibo">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="weixin" class="col-md-2 control-label">微信号</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="weixin" placeholder="微信号" name="weixin">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="source" class="col-md-2 control-label">来源</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="source" placeholder="来源" name="source">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="userid" class="col-md-2 control-label">西祠ID</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="userid" placeholder="西祠ID" name="user_id">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="screenname" class="col-md-2 control-label">西祠用户名</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="screenname" placeholder="西祠用户名" name="screen_name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="address" class="col-md-2 control-label">联系地址</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="address" placeholder="联系地址" name="address">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-8">
+                    <div class="form-group row">
+                        <div class="alert alert-dismissable alert-success">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>保存成功!</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button type="reset" class="btn btn-default">重置</button>
+                    <button type="submit" class="btn btn-success">保存</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+    <!--<div class="form-group row">-->
+        <!--<div class="alert alert-dismissable alert-danger">-->
+            <!--<button type="button" class="close" data-dismiss="alert">×</button>-->
+            <!--<strong>Oh snap!</strong> <a href="javascript:void(0)" class="alert-link">Change a few things up</a> and try submitting again.-->
+        <!--</div>-->
+    <!--</div>-->
+
+<script src="http://ajax.useso.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+</body>
+</html>
