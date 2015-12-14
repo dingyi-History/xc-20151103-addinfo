@@ -24,6 +24,7 @@
                         <p>用户标签</p>
                     </a>
                 </li>
+                @can('see-all')
                 <li class="index-card">
                     <a href="/users">
                         <span class="am-icon-btn am-icon-male am-icon-lg"></span>
@@ -31,6 +32,16 @@
                         <p>员工管理</p>
                     </a>
                 </li>
+                @endcan
+                @can('see-dep')
+                <li class="index-card">
+                    <a href="/users">
+                        <span class="am-icon-btn am-icon-male am-icon-lg"></span>
+                        <hr/>
+                        <p>部门管理</p>
+                    </a>
+                </li>
+                @endcan
             </ul>
         </div>
     </div>
