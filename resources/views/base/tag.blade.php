@@ -21,7 +21,7 @@
         if (tag.length > 0) {
             $.post("/api/addtag",
                     {
-                        _token:  $('#token').val(),
+                        _token: $('#token').val(),
                         tagname: tag
                     },
                     function (data, status) {
