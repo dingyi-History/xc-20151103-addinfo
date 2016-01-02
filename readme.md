@@ -9,3 +9,14 @@
 ## 具体实现了如下功能：
 * 员工的登录、管理、权限；
 * 用户信息的录入、更改、删除、添加；
+
+
+## 一些截图
+
+![](https://github.com/dingyiming/xc-20151103-addinfo/blob/amazeui/docs/amazeui%E6%88%90%E5%8A%9F%E5%9B%BE/localhost_8000.png?raw=true)
+
+![](https://github.com/dingyiming/xc-20151103-addinfo/blob/amazeui/docs/amazeui%E6%88%90%E5%8A%9F%E5%9B%BE/localhost_8000_do.png?raw=true)
+
+![](https://github.com/dingyiming/xc-20151103-addinfo/blob/amazeui/docs/amazeui%E6%88%90%E5%8A%9F%E5%9B%BE/localhost_8000_userinfo.png?raw=true)
+
+![](https://github.com/dingyiming/xc-20151103-addinfo/blob/amazeui/docs/amazeui%E6%88%90%E5%8A%9F%E5%9B%BE/localhost_8000_userinfo_46_.png?raw=true)
