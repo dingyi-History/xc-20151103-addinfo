@@ -4,26 +4,26 @@
     <div class="border-1 am-animation-slide-left">
         <div class="title am-primary ">
             <h2 class="am-u-md-2">用户资料</h2>
-            {!! Form::open(['url'=>'/userinfo/search',"class" => "am-form-inline am-u-md-10"]) !!}
-            <div class="am-form-group am-u-md-3 am-text-right">
-                <label>姓名</label>
-                <input type="text" name="name" class="am-form-field">
-            </div>
-            <div class="am-form-group am-u-md-3 am-text-right">
-                <label>手机号</label>
-                <input type="text" name="phone" class="am-form-field">
-            </div>
-            <div class="am-form-group am-u-md-3 am-text-right">
-                <label>身份证号</label>
-                <input type="text" name="identity" class="am-form-field">
-            </div>
-            <div class="am-form-group am-u-md-2 am-text-right am-u-end">
-                <button type="submit" class="am-btn am-btn-success">查询</button>
-                <a href="/userinfo" class="am-btn am-btn-default">全部</a>
-            </div>
-            {!! Form::close() !!}
         </div>
 
+        {!! Form::open(['url'=>'/userinfo/search',"class" => "am-form-inline"]) !!}
+        <div class="am-form-group">
+            <label>姓名</label>
+            <input type="text" name="name" class="am-form-field">
+        </div>
+        <div class="am-form-group am-text-right">
+            <label for="phone">手机号</label>
+            <input type="text" name="phone"  id="phone" class="am-form-field">
+        </div>
+        <div class="am-form-group ">
+            <label>身份证号</label>
+            <input type="text" name="identity" class="am-form-field">
+        </div>
+        <div class="am-form-group am-text-right">
+            <button type="submit" class="am-btn am-btn-success">查询</button>
+        </div>
+        {!! Form::close() !!}
+        <p><hr></p>
         <table class="am-table am-table-hover">
             <thead>
             <tr>

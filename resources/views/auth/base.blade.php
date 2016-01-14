@@ -13,8 +13,7 @@
 </head>
 <body>
 @include('base.response')
-{{-- 继承后插入的内容 --}}
-    @yield('content')
+@yield('content')
 
 <script src="/amazeui/jquery.min.js"></script>
 <script src="/amazeui/amazeui.min.js"></script>
